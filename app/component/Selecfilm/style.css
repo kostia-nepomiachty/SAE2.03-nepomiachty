@@ -1,0 +1,133 @@
+
+.scroll{
+  display: block;
+  flex-direction: row;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  flex-direction: row;
+  scroll-behavior: smooth;
+  padding-left: 2rem;
+  padding-top: 2rem;
+}
+
+.sectfilm {
+  display: flex;
+  width: 304px;
+  height: auto;
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  border-radius: 15px;
+  background-color: red;
+}
+
+
+.title {
+  font-size: 1.5rem;
+  font-family: "Archivo Black", sans-serif;
+}
+
+.sectfilm__ilustra {
+  width: 304px;
+  height: 456px;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  /* width: 40px;
+  height: 200px; */
+}
+
+.sectfilm__titre {
+  font-size: 1.3rem;
+  font-family: "Archivo Black", sans-serif;
+}
+
+.sectfilm__desci {
+  font-size: 0.5rem;
+  font-family: "Archivo Black", sans-serif;
+  font-style: normal;
+  /* display: block; */
+}
+
+
+@media only screen and (max-width: 499px) and (min-width: 10px) {
+  .sectfilm__desci {
+    opacity: 0%;
+    /* display: none; */
+  }
+}
+
+
+/* html {
+  scroll-behavior: smooth;
+}
+.wrapper section{
+    width: 100%;
+    position: relative;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3,100%);
+  overflow:hidden;
+  scroll-behavior: smooth;
+
+  section {
+    width: 100%;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    margin: 20px 0;
+    
+    .item {
+      position: relative;
+      padding: 0 2px;
+      transition: var(--duration) all;
+      
+      &:hover { 
+        margin: 0 40px;
+        transform: scale(1.2);
+      }
+
+
+      .heading {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        color: #fff;
+      }
+
+      .duration {
+        position: absolute;
+        bottom: 0;
+        left: 20px;
+        color: #fff;
+      }
+      
+    }
+
+    .arrow__btn {
+      position: absolute;
+      color: #fff;
+      text-decoration: none;
+      font-size: 6em;
+      background:rgb(0,0,0);
+      width: 80px;
+      padding: 20px;
+      text-align: center;
+      z-index: 1;
+    }
+
+    .left-arrow {
+      top:0; bottom:0; left:0;
+      background: linear-gradient(-90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+    }
+    
+    .right-arrow {
+      top:0; bottom:0; right: 0;
+      background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+    }
+
+  }
+}; */
+

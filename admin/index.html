@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="fr">
   <head>
     <title>SAE2.03 ADMIN</title>
@@ -8,14 +9,39 @@
   </head>
   <body>
     <section id="log"></section>
+    <section id="moviee"></section>
+
 
     <script type="module">
+      import {Newfilm} from './component/Newfilm/script.js';
       import { Log } from "./component/Log/script.js";
+      import { DataMovie } from "./data/dataMovie.js";
 
       window.C = {};
 
+
+      C.handlerCreate = async function() {
+        let form = document.querySelector('.AF__form');
+        let fd = new FormData(form);
+        let res = await DataMovie.add(fd);
+        V.renderLog(res);
+      }
+
+      C.handlerUpdate = async function() {
+            
+        let form = document.querySelector('.AF__form');
+
+        let fd = new FormData(form);
+
+        let res = await Datafilms.update(fd);
+        V.renderLog(res);
+      }
+
+
+
       C.start = function () {
         V.renderLog("Démarrage de l'application");
+        V.renderNewMenu("C.handlerCreate()");
       };
 
       window.V = {};
@@ -25,7 +51,15 @@
         content.innerHTML = Log.format(txt);
       };
 
+      V.renderNewMenu = function(handler){
+            let content = document.querySelector('#moviee');
+            content.innerHTML = Newfilm.format(handler); // ici "Newfilm"
+      }
+
       C.start();
     </script>
+    <?php 
+    echo $message;
+    ?>
   </body>
 </html>

@@ -5,3 +5,11 @@
 @import "./utilities.css" layer(utilities);
 
 @import "../component/NavBar/style.css" layer(components);
+@import "../component/GridFilm/style.css" layer(components);
+@import "../component/MovieDetail/style.css" layer(components);
+@import "../component/MovieCategory/style.css" layer(components);
+
+
+body {
+  background-color: var(--color-bleu-black);
+}

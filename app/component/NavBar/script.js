@@ -6,7 +6,10 @@ let NavBar = {};
 NavBar.format = function (hAbout, hHome) {
   let html = template;
   html = html.replace("{{hAbout}}", hAbout);
+  html = html.replace("{{hHome}}", hHome);
   return html;
+
+  
 };
 
 export { NavBar };

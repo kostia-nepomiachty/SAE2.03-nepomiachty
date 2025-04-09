@@ -8,13 +8,28 @@
   </head>
 
   <body>
-    <h1>Hello SAe</h1>
     <header id="header"></header>
 
     <section id="content"></section>
 
+    <section id="MovieDetail" class="blockHide"></section>
+    
+    <!-- <div class="scroll"> -->
     <script type="module">
       import { NavBar } from "./component/NavBar/script.js";
+    
+      
+      import { GridFilm } from "./component/GridFilm/script.js";
+      //import { MovieCategory } from "./component/MovieCategory/script.js";
+      
+      
+
+      // import { film } from "./component/Selecfilm/script.js";
+      // import { Datafilms } from "./component/Selecfilm/script.js"; //definir un JS qui regroup tout les {{film}}
+      import { Datafilms } from "./data/dataMovie.js"; //definir un JS qui regroup tout les {{film}}
+      import { MovieDetail } from "./component/MovieDetail/script.js"; //definir un JS qui regroup tout les {{film}}
+
+      import { MovieCategory } from "./component/MovieCategory/script.js"; 
 
       // Controleur
       // Rappel, écrire window.C plutôt que let C est nécessaire pour tester depuis la console du navigateur
@@ -27,8 +42,19 @@
         );
       };
 
-      C.start = function () {
-        V.renderNavBar("C.handlerAbout()");
+      C.handlerHome = function () {
+        window.location.href = 'http://sae2.03.localhost/app/'
+      };
+
+
+      C.start = async function () {
+        //C.getFilms();
+        var listeCategories = await C.getCategories();
+        for(var i = 0; i < listeCategories.length; i++) {
+          var viderliste = (i == 0);
+          C.getFilmsFiltresCategorie(listeCategories[i].id, listeCategories[i].name, viderliste);
+        }
+        V.renderNavBar("C.handlerAbout()", "C.handlerHome()");
       };
 
       // Vue (contient tout ce qui est relatif à l'affichage)
@@ -41,13 +67,72 @@
        * Elle sélectionne l'élément HTML avec l'ID "header" et y insère le contenu
        * formaté par le composant NavBar.
        */
-      V.renderNavBar = function (hAbout) {
+      V.renderNavBar = function (hAbout, hHome) {
         let header = document.querySelector("#header");
-        header.innerHTML = NavBar.format(hAbout);
+        header.innerHTML = NavBar.format(hAbout, hHome);
       };
+
+      V.renderFilms = function (d, categorie, viderListe) {
+        let content = document.querySelector("#content");
+        if (viderListe) content.innerHTML = '';
+        content.innerHTML = content.innerHTML + GridFilm.formatMany(d, categorie);
+      };
+
+      V.renderMovieDetail = function (d) {
+        let content = document.querySelector("#MovieDetail");
+        content.innerHTML = MovieDetail.format(d);
+      };
+
+
+      // demander liste des films
+      C.getFilms = async function(){
+        let data = await Datafilms.request();
+        if (data.length == 0){
+          data = [
+            {"id":0,"name":"Pas de données","description":"", "image":"transparent.png"}
+          ];
+        }
+        console.log(data);
+        V.renderFilms(data);
+      }
+
+      // demander liste des films filtrés par categorie
+      C.getFilmsFiltresCategorie = async function(id_categorie, categorie, viderListe = true){
+        let data = await Datafilms.getFilmsFiltresCategorie(id_categorie);
+        if (data.length == 0){
+          data = [
+            {"id":0,"name":"Pas de données","description":"", "image":"transparent.png"}
+          ];
+        }
+        console.log(data);
+        V.renderFilms(data, categorie, viderListe);
+      }
+
+
+      // demander un film
+      C.MovieDetail = async function(id){
+        let data = await Datafilms.MovieDetail(id);
+        if (data.length == 0){
+          data = [
+            {"id":0,"name":"Pas de données","description":"", "image":"transparent.png"}
+          ];
+        }
+        console.log(data);
+        V.renderMovieDetail(data);
+        document.getElementById('MovieDetail').className = 'blockShow';
+      }
+
+      // demander liste des categories
+      C.getCategories = async function(){
+        let data = await Datafilms.getListCategories();
+        console.log(data);
+        return(data);
+      }      
+
 
       C.start(); // Démarre l'application
     </script>
+    <!-- </div> -->
   </body>
 </html>
 <script type="module"></script>

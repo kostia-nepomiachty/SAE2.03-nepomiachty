@@ -1,0 +1,33 @@
+
+<div class="AF">
+    <h2 class="AF__title"># Ajouter des films à la base de donnée</h2>
+    <form class="AF__form" name="AF__form" id="AF__form">
+
+        Saisir le titre du film: <input required type="text" name="titre" placeholder="Titre">
+        <input required type="text" name="nom" placeholder="Saisir le nom du réalisateur">
+        <input required type="number" name="annee" placeholder="Saisir l'année de sortie">
+        <input required type="number" name="duree" placeholder="Saisir la durée du film en minute">
+        <input required type="text" name="desci" placeholder="Saisir la description">
+
+        <select name="categorie">
+            <option value="">Veillez selectionner une Rubrique</option>
+            <option value="1">Action</option>
+            <option value="2">Comédie</option>
+            <option value="3">Drame</option>
+            <option value="4">Science-fiction</option>
+            <option value="5">Animation</option>
+            <option value="6">Thriller</option>
+            <option value="7">Horreur</option>
+            <option value="8">Aventure</option>
+            <option value="9">Fantaisie</option>
+            <option value="10">Documentaire</option>
+        </select>
+
+        <input required type="text" name="ilustra" placeholder="Saisir le nom du dossier image du film">
+        <input required type="text" name="lienyt" placeholder="Saisir le lien Youtube du trailler">
+        <input required type="number" name="age" placeholder="Saisir l'age minimum autorisé">
+       
+        <input onclick="{{handler}}" type="button" value="Update" name="todo">
+
+    </form>
+</div>
