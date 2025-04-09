@@ -1,4 +1,4 @@
-let HOST_URL = "http://sae2.03.localhost/";
+let HOST_URL = "https://mmi.unilim.fr/~nepomiachty1/SAE2.03-nepomiachty/";
 let DataMovie = {};
 
 DataMovie.add = async function (fdata) {
