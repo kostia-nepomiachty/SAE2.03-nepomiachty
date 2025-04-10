@@ -6,8 +6,18 @@
 //    HOST_URL = "https://mmi.unilim.fr/~nepomiachty1/SAE2.03_app_streming/";
 //}
 //else {
-    let HOST_URL = "https://mmi.unilim.fr/~nepomiachty1/SAE2.03-nepomiachty/";
+    //let HOST_URL = "http://sae2.03.localhost/";
+    // Changement en ligne
+    // HOST_URL + "https://mmi.unilim.fr/~nepomiachty1/SAE2.03-nepomiachty/"
 //}
+
+let HOST_URL = '';
+if (chemin != '')
+  HOST_URL = "https://mmi.unilim.fr/~nepomiachty1/SAE2.03_app_streming/";
+else 
+  HOST_URL = "http://sae2.03.localhost/";
+
+
 
 let Datafilms = {};
 

@@ -6,16 +6,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/base.css" />
+    <script>
+      function chemin_img() {
+        var prod = (document.location.href.search('~nepomiachty1') > -1);
+        var r = (prod) ? '~nepomiachty1/SAE2.03-nepomiachty' : '';
+        return(r);
+      }
+      let chemin = chemin_img();
+    </script>
   </head>
   <body>
     <section id="log"></section>
     <section id="moviee"></section>
+    <section id="profile"></section>
 
 
     <script type="module">
-      import {Newfilm} from './component/Newfilm/script.js';
       import { Log } from "./component/Log/script.js";
+      import {Newfilm} from './component/Newfilm/script.js';
+      import {ProfileForm} from './component/ProfileForm/script.js';
       import { DataMovie } from "./data/dataMovie.js";
+      import { DataProfile } from "./data/dataprofile.js";
+      
 
       window.C = {};
 
@@ -25,6 +37,13 @@
         let fd = new FormData(form);
         let res = await DataMovie.add(fd);
         V.renderLog(res);
+      }  
+
+      C.handlerProfileCreate = async function() {
+        let form1 = document.querySelector('.PF__form');
+        let fd1 = new FormData(form1);
+        let res1 = await DataProfile.add(fd1);
+        V.renderLog(res1);
       }
 
       C.handlerUpdate = async function() {
@@ -41,7 +60,8 @@
 
       C.start = function () {
         V.renderLog("Démarrage de l'application");
-        V.renderNewMenu("C.handlerCreate()");
+        V.renderNewFilm("C.handlerCreate()");
+        V.renderNewProfile("C.handlerProfileCreate()");
       };
 
       window.V = {};
@@ -51,15 +71,25 @@
         content.innerHTML = Log.format(txt);
       };
 
-      V.renderNewMenu = function(handler){
+      V.renderNewFilm = function(handler){
             let content = document.querySelector('#moviee');
             content.innerHTML = Newfilm.format(handler); // ici "Newfilm"
       }
 
+      V.renderNewProfile = function(handler){
+            let content = document.querySelector('#profile');
+            content.innerHTML = ProfileForm.format(handler); // ici "profile"
+      }
+
+      // V.renderNewMenu = function(pandler){
+      //   let content = document.querySelector('#profile');
+      //   content.innerHTML = ProfileFrom.format(pandler); // ici "ProfileFrom"
+      // }
+
       C.start();
     </script>
     <?php 
-    echo $message;
+    echo $message; 
     ?>
   </body>
 </html>

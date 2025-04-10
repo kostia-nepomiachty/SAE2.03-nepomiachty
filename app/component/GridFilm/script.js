@@ -8,6 +8,7 @@ let GridFilm = {};
 GridFilm.format = function (f, categorie) {
   let html = template;
   html = html.replace("{{categorie}}", categorie);
+  html = html.replaceAll("{{chemin}}", chemin);
   for (var i=1; i<=nbColonnes; i++) {
     html = html.replace("{{film" + i + ".titre}}", f[i - 1].name);
     html = html.replace("{{film" + i + ".desci}}", f[i - 1].description);

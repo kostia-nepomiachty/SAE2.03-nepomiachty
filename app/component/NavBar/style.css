@@ -5,7 +5,7 @@
   align-items: center;
   padding: 1rem 3rem;
   color: var(--color-fg);
-  background-color: var(--color-barre-nave);
+  background-color: var(--color-bblack);
   text-transform: uppercase;
   font-family: "Roboto", sans-serif;
 
@@ -20,13 +20,29 @@
     &:hover {
       --_offset: 0.5rem;
     }
-  }
+  } 
 }
 
 .retour-menu {
   display: block;
   width: auto;
   height: auto;
-  /* color: var();
-  background-color: var(); */
+  color: var(--color-bleu-with);
+  background-color: var(--color-bblack);
+
+}
+
+.avbar__list {
+
+}
+
+.selectp {
+  background-color: rgba(255, 240, 240, 0);
+  border-color: rgba(255, 240, 240, 0);
+}
+
+.sectprofile {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
 }

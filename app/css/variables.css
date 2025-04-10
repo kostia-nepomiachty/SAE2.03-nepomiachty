@@ -16,6 +16,7 @@
   --color-bg: var(--color-gray-dark);
 
   /* Color décore\élements */
+  --color-bblack: hsl(214, 67%, 5%);
   --color-bleu-black: hsl(215, 62.9%, 13.7%);
   --color-bleu-moins-black: hsl(215, 53%, 17%);
   --color-bleu: hsl(216, 64.8%, 24.5%);

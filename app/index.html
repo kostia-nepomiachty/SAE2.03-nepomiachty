@@ -5,6 +5,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/base.css" />
+    <script>
+      function chemin_img() {
+        var prod = (document.location.href.search('~nepomiachty1') > -1);
+        var r = (prod) ? '~nepomiachty1/SAE2.03-nepomiachty' : '';
+        return(r);
+      }
+      let chemin = chemin_img();
+    </script>
   </head>
 
   <body>
@@ -13,6 +21,8 @@
     <section id="content"></section>
 
     <section id="MovieDetail" class="blockHide"></section>
+
+    <!-- <section id="ChangeProfil" class="blockHide"></section> -->
     
     <!-- <div class="scroll"> -->
     <script type="module">

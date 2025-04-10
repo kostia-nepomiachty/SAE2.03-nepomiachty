@@ -10,6 +10,3 @@
 @import "../component/MovieCategory/style.css" layer(components);
 
 
-body {
-  background-color: var(--color-bleu-black);
-}

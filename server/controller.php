@@ -115,3 +115,22 @@ function list_categories() {
     $res = $stmt->fetchAll(PDO::FETCH_OBJ);
     return $res; // Retourne les résultats
 }
+
+
+//$data = addProfile($name, $photo, $min_age);
+function addProfile($name, $photo, $min_age) {
+    // Connexion à la base de données
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
+//         addProfile($name, $director, $year, $length, $description, $id_category, $image, $trailer,$min_age);
+
+    $sql = 'INSERT INTO profile(name, photo, min_age) VALUES(:name, :photo, :min_age)';
+
+    $stmt = $cnx->prepare($sql);
+    $stmt->bindParam(':name', $name);
+    $stmt->bindParam(':photo', $photo);
+    $stmt->bindParam(':min_age', $min_age);
+    $stmt->execute();
+
+    $lastInsertId = $cnx->lastInsertId();
+    return array('id' => $lastInsertId);    
+}

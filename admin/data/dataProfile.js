@@ -1,14 +1,18 @@
 
+//regroupera toutes les requêtes HTTP adressées au serveur 
+
+// pour les profiles DataProfile.add
+
+
 let HOST_URL = "";
 if (chemin != "")
   HOST_URL = "https://mmi.unilim.fr/~nepomiachty1/SAE2.03_app_streming/";
 else HOST_URL = "http://sae2.03.localhost/";
 
-    // Changement en ligne
-    // let HOST_URL = "https://mmi.unilim.fr/~nepomiachty1/SAE2.03-nepomiachty/"
-let DataMovie = {};
 
-DataMovie.add = async function (fdata) {
+let DataProfile = {};
+
+DataProfile.add = async function (fdata) {
   // fetch possède un deuxième paramètre (optionnel) qui est un objet de configuration de la requête HTTP:
   //  - method : la méthode HTTP à utiliser (GET, POST...)
   //  - body : les données à envoyer au serveur (sous forme d'objet FormData ou bien d'une chaîne de caractères, par exempe JSON)
@@ -16,11 +20,14 @@ DataMovie.add = async function (fdata) {
     method: "POST", // méthode HTTP à utiliser
     body: fdata, // données à envoyer sous forme d'objet FormData
   };
-  let answer = await fetch(HOST_URL + "/server/script.php?todo=addMovie", config);
+  let answer = await fetch(
+    HOST_URL + "/server/script.php?todo=addProfile",
+    config
+  );
   let data = await answer.json();
   //window.alert("Film créé. Id="+data.id);
-  V.renderLog("Film créé. Id=" + data.id);
+  V.renderLog("Profil créé. Id=" + data.id);
   return data;
 };
 
-export { DataMovie };
+export { DataProfile };

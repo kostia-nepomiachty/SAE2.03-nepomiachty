@@ -13,8 +13,20 @@
  * DBLOGIN : Nom d'utilisateur pour se connecter à la base de données.
  * DBPWD : Mot de passe pour se connecter à la base de données.
  */
-define("HOST", "localhost");
-define("DBNAME", "nepomiachty1");
-define("DBLOGIN", "nepomiachty1");
-define("DBPWD", "nepomiachty1");
+$url = $_SERVER['REMOTE_ADDR'];
+$env = 'prod';
+if ( strpos($url, '~nepomiachty1') === false) 
+    $env = 'local';
 
+if ($env == 'local') {
+    define("HOST", "localhost");
+    define("DBNAME", "nepomiachty1");
+    define("DBLOGIN", "root");
+    define("DBPWD", "Kostia123");
+}    
+else {
+    define("HOST", "localhost");
+    define("DBNAME", "nepomiachty1");
+    define("DBLOGIN", "nepomiachty1");
+    define("DBPWD", "nepomiachty1");
+}

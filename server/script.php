@@ -86,6 +86,14 @@ $data = false;
         $data = addMovie($name, $director, $year, $length, $description, $id_category, $image, $trailer,$min_age);
         break;
 
+      case 'addProfile':
+        //error_log("[DEBUG #01] titre=".$name);
+        $name = (isset($_POST['name'])) ? $_POST['name'] : '';
+        $photo = (isset($_POST['photo'])) ? $_POST['photo'] : '';
+        $min_age = (isset($_POST['min_age'])) ? $_POST['min_age'] : 0;
+        $data = addProfile($name, $photo, $min_age);
+        break;
+
       case 'listCategories':
         $data = list_categories();
         break;

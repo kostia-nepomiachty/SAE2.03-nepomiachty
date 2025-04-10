@@ -16,4 +16,15 @@
   --color-fg: var(--color-white);
   --color-bg: var(--color-gray-dark);
   --color-accent: var(--color-green);
+
+    /* Color décore\élements */
+  --color-bleu-black: hsl(215, 62.9%, 13.7%);
+  --color-bleu-moins-black: hsl(215, 53%, 17%);
+  --color-bleu: hsl(216, 64.8%, 24.5%);
+  --color-bleu-with: hsl(193, 37.2%, 83.1%);
+  --color-rouge-black: hsl(354, 66.4%, 26.9%);
+  --color-rouge-with: hsl(353, 52.6%, 50.4%);
+  
+  --color-barre-nave: hsl(354, 75%, 11%);
+  --color-buton: hsl(353, 73%, 45%);
 }

@@ -5,3 +5,15 @@
 .font-mono {
   font-family: Courier, monospace;
 }
+
+body {
+  background-color: var(--color-bleu-with);
+}
+
+#log {
+  position: relative;
+}
+
+#moviee {
+  position: center;
+}
