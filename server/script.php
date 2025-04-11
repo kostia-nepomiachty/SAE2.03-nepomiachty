@@ -116,7 +116,7 @@ $data = false;
     if ($data===false){
       echo json_encode('[error] Controller returns false');
       http_response_code(500); // 500 == "Internal error"
-      exit();
+      exit(); 
     }
 
     /**
@@ -141,7 +141,7 @@ $data = false;
  * HTTP 404 (Not found), indiquant que la requête HTTP ne correspond à rien.
  */
 http_response_code(404); // 404 == "Not found"
-
+ 
 
 
 

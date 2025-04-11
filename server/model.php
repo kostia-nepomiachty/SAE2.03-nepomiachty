@@ -13,9 +13,9 @@
  * DBLOGIN : Nom d'utilisateur pour se connecter à la base de données.
  * DBPWD : Mot de passe pour se connecter à la base de données.
  */
-$url = $_SERVER['REMOTE_ADDR'];
+$url = $_SERVER['HTTP_HOST'];
 $env = 'prod';
-if ( strpos($url, '~nepomiachty1') === false) 
+if ( strpos($url, 'mmi.unilim.fr') === false) 
     $env = 'local';
 
 if ($env == 'local') {

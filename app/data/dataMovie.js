@@ -11,9 +11,12 @@
     // HOST_URL + "https://mmi.unilim.fr/~nepomiachty1/SAE2.03-nepomiachty/"
 //}
 
+
+let prod = document.location.href.search("~nepomiachty1") > -1;
+
 let HOST_URL = '';
-if (chemin != '')
-  HOST_URL = "https://mmi.unilim.fr/~nepomiachty1/SAE2.03_app_streming/";
+if (prod)
+  HOST_URL = "https://mmi.unilim.fr/~nepomiachty1/SAE2.03-nepomiachty/";
 else 
   HOST_URL = "http://sae2.03.localhost/";
 

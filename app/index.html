@@ -8,7 +8,8 @@
     <script>
       function chemin_img() {
         var prod = (document.location.href.search('~nepomiachty1') > -1);
-        var r = (prod) ? '~nepomiachty1/SAE2.03-nepomiachty' : '';
+        //var r = (prod) ? '~nepomiachty1/SAE2.03-nepomiachty' : '';
+        var r = (prod) ? '../' : '';
         return(r);
       }
       let chemin = chemin_img();
