@@ -57,10 +57,14 @@ $data = false;
     switch($todo){
       case 'readmovie':
         $categorie = '';
+        $min_age = '';
         if (isset($_REQUEST['categorie'])) {
           $categorie = $_REQUEST['categorie'];
         }
-        $data = liste_films($categorie);
+        if (isset($_REQUEST['min_age'])) {
+          $min_age = $_REQUEST['min_age'];
+        }
+        $data = liste_films($categorie, $min_age);
         break;
 
       case 'readMovieDetail':
@@ -94,8 +98,26 @@ $data = false;
         $data = addProfile($name, $photo, $min_age);
         break;
 
+      case 'updateProfile':
+        $data = json_decode(file_get_contents('php://input'), true);
+        $id = (isset($data['id'])) ? $data['id'] : '';
+        $name = (isset($data['name'])) ? $data['name'] : '';
+        $photo = (isset($data['photo'])) ? $data['photo'] : '';
+        $min_age = (isset($data['min_age'])) ? $data['min_age'] : 0;
+        $data = updateProfile($id, $name, $photo, $min_age);
+        break;
+
       case 'listCategories':
         $data = list_categories();
+        break;
+
+      case 'readProfiles':
+        $data = read_profiles();
+        break;
+
+      case 'readProfile':
+        $id = (isset($_GET['id'])) ? $_GET['id'] : '';
+        $data = read_profile($id);
         break;
 
       default: // il y a un paramètre todo mais sa valeur n'est pas reconnue/supportée
@@ -116,7 +138,7 @@ $data = false;
     if ($data===false){
       echo json_encode('[error] Controller returns false');
       http_response_code(500); // 500 == "Internal error"
-      exit(); 
+      exit();
     }
 
     /**
@@ -141,7 +163,7 @@ $data = false;
  * HTTP 404 (Not found), indiquant que la requête HTTP ne correspond à rien.
  */
 http_response_code(404); // 404 == "Not found"
- 
+
 
 
 

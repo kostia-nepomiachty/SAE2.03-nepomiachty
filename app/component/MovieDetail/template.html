@@ -12,16 +12,16 @@
             <h1 class="deroul__titre">{{titre}}</h1>
         </div>
 
-        <p class="deroul__duree">{{duree}} mn</p>
+        <p class="deroul__duree">Durée {{duree}} mn</p>
         <!-- <div class="deroul__lienyt"> -->
             <iframe class="deroul__lienyt" src="https://www.youtube.com/embed/{{lienyt}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         <!-- </div> -->
         <!-- width="560" height="315" -->
         <div class="deroul__info">
-            <p class="info__nom">{{nom}}</p>
-            <p class="info__age">+ {{age}} ans</p>
-            <p class="info__annee">{{annee}}</p>
-            <p class="info__categorie">{{categorie}}</p>
+            <p class="info__nom">Réalisateur {{nom}}</p>
+            <p class="info__age">Recommandation +{{age}} ans</p>
+            <p class="info__annee">Date de sortie {{annee}}</p>
+            <p class="info__categorie">Genre {{categorie}}</p>
             <p class="info__5"></p>
             <p class="info__6"></p>
         </div>
@@ -35,7 +35,9 @@
         </div>
         <div class="deroul__ilustra">
             <p class="deroul__desci">{{desci}}</p>
-            <img src="{{chemin}}/server/images/{{ilustra}}" height="100" class="deroul__ilustra"/>
+            <div class="deroul__ilustra1">
+                <img src="{{chemin}}/server/images/{{ilustra}}" height="100" class="deroul__image"/>
+            </div>
         </div>
     </article>
 </div>

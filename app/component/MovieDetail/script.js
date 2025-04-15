@@ -7,7 +7,7 @@ let MovieDetail = {};
 
 MovieDetail.format = function (m) {
     let html = template;
-    html = html.replaceAll("{{chemin}}", chemin);
+    html = html.replaceAll("{{chemin}}", '');
     html = html.replace("{{titre}}", m.name);
     html = html.replace("{{duree}}", m.length);
     html = html.replace("{{lienyt}}", m.trailer);

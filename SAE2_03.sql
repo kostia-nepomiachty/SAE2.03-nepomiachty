@@ -1,3 +1,14 @@
+--
+-- Base de donnees : `SAE203'
+--
+--CREATE DATABASE IF NOT EXISTS `SAE203' DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+--USE SAE203;
+
+
+
+
+
+
 -- phpMyAdmin SQL Dump
 -- version 5.1.0
 -- https://www.phpmyadmin.net/

@@ -15,7 +15,7 @@
  */
 $url = $_SERVER['HTTP_HOST'];
 $env = 'prod';
-if ( strpos($url, 'mmi.unilim.fr') === false) 
+if ( strpos($url, 'mmi-limoges.fr') === false) 
     $env = 'local';
 
 if ($env == 'local') {
@@ -26,7 +26,7 @@ if ($env == 'local') {
 }    
 else {
     define("HOST", "localhost");
-    define("DBNAME", "nepomiachty1");
-    define("DBLOGIN", "nepomiachty1");
-    define("DBPWD", "nepomiachty1");
+    define("DBNAME", "SAE203");
+    define("DBLOGIN", "usersae203");
+    define("DBPWD", 'Pi(||0uTEur');
 }

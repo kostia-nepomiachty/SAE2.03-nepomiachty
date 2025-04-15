@@ -8,5 +8,6 @@
 @import "../component/GridFilm/style.css" layer(components);
 @import "../component/MovieDetail/style.css" layer(components);
 @import "../component/MovieCategory/style.css" layer(components);
+@import "../component/SelecProfil/style.css" layer(components);
 
 

@@ -1,11 +1,46 @@
 
+.blockShow {
+    visibility: visible;
+    /* z-index: 100; */
+            position: sticky;
+            overflow: hidden;
+            float: right;
+    width: 44.5625rem;
+    height: 100%;
+    /* position: absolute; */
+    right: 0;
+    /* top: 77px; */
+
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-color: hsla(312, 18%, 84%, 0.14) rgba(0, 128, 0, 0);
+
+    border-left: 0.2em solid var(--color-bleu-moins-black);
+    border-bottom: 0.2em solid var(--color-bleu-moins-black);
+    padding: 1rem 1rem 1rem 1rem ;
+    background-color: var(--color-bleu);
+
+}
+
+.blockHide {
+  visibility: hidden;
+}
+
+.cate_film {
+  font-size: 2rem;
+  padding: 3rem 0rem 0rem 3.2rem;
+  font-family: "Roboto", sans-serif;
+  color: var(--color-bleu-with);
+}
+
+
 .deroul__sectfilm {
     position: center;
     color: var(--color-white);
 }
 
 .tablo_header {
-    display: flex;  
+    display: flex;
 }
 
 .deroul__titre {
@@ -89,11 +124,79 @@
 
 .deroul__desci {
     padding-top: 0.8rem;
+    padding-bottom: 3rem;
     font-size: 1.2rem;
     font-family: "Roboto", sans-serif;
     line-height: 1.5rem;
+    z-index: 903;
 }
 
+
 .deroul__ilustra {
-    
+    width: 100%;
+    /* position: relative;
+    margin: auto;
+    height: fit-content;
+    background-size: cover;
+    background-position: center; */
+    /* padding: 100px 163px 100px 164px;
+    background-position: 0px -650px; */
+}
+
+/*
+.deroul__image {
+    width: 100%;
+    height: 20rem;
+    object-fit: cover;
+    / * z-index: 901; * /
+    / * position: relative; * /
+    display: inline-block;
+    / * background-image: linear-gradient(rgba(255,0,0,0), rgba(255,0,0,1)); * /
+}
+*/
+
+/* .deroul__image:hover {
+
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 901;
+    background-color: rgba(255, 0, 0, 0.5); Couleur rouge avec 50% d'opacité */
+
+ /*   z-index: -1;
+    background-color: var(--clr-image-bleu);
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 50%;
+    background-image: linear-gradient(rgba(255,0,0,0), rgba(255,0,0,1));*/
+
+
+.deroul__ilustra1::before {
+    content: "";
+    /* position: absolute;  */
+    z-index: 902;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(255,0,0,0.6), rgba(255,255,0,0));
+    pointer-events: none;
+}
+.deroul__ilustra1 .deroul__image {
+    height: 20rem;
+    object-fit: cover;
+    display: block;
+    width: 100%;
+}
+
+@media only screen and (max-width: 800px) and (min-width: 10px) {
+    .blockShow {
+        width: 100%;
+    }
+
 }

@@ -11,14 +11,13 @@
     // HOST_URL + "https://mmi.unilim.fr/~nepomiachty1/SAE2.03-nepomiachty/"
 //}
 
+// let prod = document.location.href.search("~nepomiachty1") > -1;
 
-let prod = document.location.href.search("~nepomiachty1") > -1;
-
-let HOST_URL = '';
-if (prod)
-  HOST_URL = "https://mmi.unilim.fr/~nepomiachty1/SAE2.03-nepomiachty/";
-else 
-  HOST_URL = "http://sae2.03.localhost/";
+// let HOST_URL = '';
+// if (prod)
+//   HOST_URL = "https://mmi.unilim.fr/~nepomiachty1/SAE2.03-nepomiachty/";
+// else 
+//   HOST_URL = "http://sae2.03.localhost/";
 
 
 
@@ -40,8 +39,10 @@ Datafilms.request = async function () {
   return data;
 };
 
-Datafilms.getFilmsFiltresCategorie = async function (categorie) {
-  let answer = await fetch(HOST_URL + "/server/script.php?todo=readmovie&categorie="+categorie);
+Datafilms.getFilmsFiltresCategorie = async function (categorie, min_age) {
+  var param = min_age == "" ? "" : "&min_age=" + min_age;
+  let answer = await fetch(HOST_URL + "/server/script.php?todo=readmovie&categorie="+categorie+param);
+  console.log("getFilmsFiltresCategorie GET "+HOST_URL + "/server/script.php?todo=readmovie&categorie="+categorie+param);
   let data = await answer.json();
   return data;
 };
@@ -59,6 +60,5 @@ Datafilms.getListCategories = async function () {
   let data = await answer.json();
   return data;
 };
-
 
 export { Datafilms };

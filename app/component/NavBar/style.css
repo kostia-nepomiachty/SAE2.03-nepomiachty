@@ -1,13 +1,21 @@
 .navbar {
   width: 100%;
+  position: sticky;
+  top: 0;
+  
+  z-index: 1000;
+  overflow: hidden;
+
+
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
   padding: 1rem 3rem;
   color: var(--color-fg);
   background-color: var(--color-bblack);
   text-transform: uppercase;
   font-family: "Roboto", sans-serif;
+}
 
   .navbar__item {
     --_offset: 0.2rem;
@@ -21,7 +29,20 @@
       --_offset: 0.5rem;
     }
   } 
+
+
+
+.logo_site {
+  font-size: 1.8rem;
+  font-family: "Space Grotesk", sans-serif;
 }
+
+.logo__maj {
+  font-size: 2rem;
+  font-family: "Rubik Mono One", sans-serif;
+}
+
+
 
 .retour-menu {
   display: block;
@@ -46,3 +67,93 @@
   width: 2rem;
   border-radius: 50%;
 }
+
+.petit {
+  display: none;
+  display: flex;
+  justify-content: space-between;
+  background-color: brown;
+}
+
+
+@media only screen and (max-width: 499px) and (min-width: 10px) {
+  .logo_site {
+    font-size: 1rem;
+  }
+  .logo__maj {
+    font-size: 1.2rem;
+  }
+
+  .petit {
+    display: block;
+    display: flex;
+  }
+}
+
+
+
+ /* teste button  */
+
+/* .text-box {
+    padding-right: 3rem;
+}
+
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block;
+    border-radius: 100px;
+    transition: all .2s;
+    position: absolute;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #777;
+}
+
+.btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.btn-white::after {
+    background-color: #fff;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-animated {
+    animation: moveInBottom 5s ease-out;
+    animation-fill-mode: backwards;
+}
+
+@keyframes moveInBottom {
+  0% {
+      opacity: 0;
+      transform: translateY(30px);
+  }
+} */

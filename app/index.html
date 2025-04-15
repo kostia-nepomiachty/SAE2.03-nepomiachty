@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/base.css" />
     <script>
+      /*
       function chemin_img() {
         var prod = (document.location.href.search('~nepomiachty1') > -1);
         //var r = (prod) ? '~nepomiachty1/SAE2.03-nepomiachty' : '';
@@ -13,7 +14,93 @@
         return(r);
       }
       let chemin = chemin_img();
+      */
+     // https://nepomiachty-sae203.mmi-limoges.fr/
+    let prod = document.location.href.search("mmi-limoges.fr") > -1;
+    let HOST_URL = "";
+    if (prod)
+      HOST_URL = "https://nepomiachty-sae203.mmi-limoges.fr/";
+    else HOST_URL = "http://sae2.03.localhost/";
     </script>
+
+    <style>
+      #header {
+        width: 100%;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        overflow: hidden;
+      }
+      
+
+      .blockHide {
+        position: fixed;
+        top: 10rem;
+        z-index: 900;
+        overflow: hidden;
+      }
+       #MovieDetail {
+        /*
+        position: sticky;
+        overflow: hidden;
+        */
+        z-index: 900;
+        top: 10%;
+        float: right;
+
+/*        top: 77;
+        z-index: 1002;
+        overflow: hidden;
+        */
+      }
+/* blockHide */
+
+/* MovieDetail */
+.blockShow {
+  visibility: visible;
+  
+  width: 44.5625rem;
+  height: 100%;
+  position: fixed;
+  right: 0;
+  /* top: 77px; */
+  border-left: 0.2em solid var(--color-bleu-moins-black);
+  border-bottom: 0.2em solid var(--color-bleu-moins-black);
+  padding: 1rem 1rem 1rem 1rem ;
+  background-color: var(--color-bleu);
+
+}
+
+#SelecProfil {
+  visibility: visible;
+  position: fixed; /*apparait n'import où est l'utilisateur*/
+  z-index: 1000; /*première position*/
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+
+  /* position: absolute; * /
+  position: relative;
+  text-align: center;
+  /* position: sticky;
+  overflow: hidden; * /
+  right: 0;
+  top: 77px;*/
+  background-color: var(--color-bleu-black);
+}
+
+/*MovieDetail fonction ici*/
+@media only screen and (max-width: 800px) and (min-width: 10px) {
+    #MovieDetail {
+        width: 100%;
+    }
+}
+
+</style>
   </head>
 
   <body>
@@ -21,26 +108,33 @@
 
     <section id="content"></section>
 
-    <section id="MovieDetail" class="blockHide"></section>
+    <section id="MovieDetail"></section>
 
-    <!-- <section id="ChangeProfil" class="blockHide"></section> -->
-    
+    <section id="SelecProfil" class=""></section>
+
     <!-- <div class="scroll"> -->
     <script type="module">
       import { NavBar } from "./component/NavBar/script.js";
-    
-      
+
+
       import { GridFilm } from "./component/GridFilm/script.js";
       //import { MovieCategory } from "./component/MovieCategory/script.js";
-      
-      
+
+
 
       // import { film } from "./component/Selecfilm/script.js";
       // import { Datafilms } from "./component/Selecfilm/script.js"; //definir un JS qui regroup tout les {{film}}
       import { Datafilms } from "./data/dataMovie.js"; //definir un JS qui regroup tout les {{film}}
-      import { MovieDetail } from "./component/MovieDetail/script.js"; //definir un JS qui regroup tout les {{film}}
+      import { MovieDetail } from "./component/MovieDetail/script.js"; //definir un JS qui affiche le detail d un film
 
-      import { MovieCategory } from "./component/MovieCategory/script.js"; 
+      import { MovieCategory } from "./component/MovieCategory/script.js";
+      import { SelecProfil } from "./component/SelecProfil/script.js";
+      import { DataProfile } from "./data/dataProfile.js"; //definir un JS qui regroupe tous les profils
+
+
+      window.profile = '';
+      window.profile_ref = [];
+      window.listeCategories = [];
 
       // Controleur
       // Rappel, écrire window.C plutôt que let C est nécessaire pour tester depuis la console du navigateur
@@ -54,18 +148,19 @@
       };
 
       C.handlerHome = function () {
-        window.location.href = 'http://sae2.03.localhost/app/'
+        window.location.href = HOST_URL + 'app/'
       };
 
 
       C.start = async function () {
         //C.getFilms();
-        var listeCategories = await C.getCategories();
-        for(var i = 0; i < listeCategories.length; i++) {
+        window.listeCategories = await C.getCategories();
+        for(var i = 0; i < window.listeCategories.length; i++) {
           var viderliste = (i == 0);
-          C.getFilmsFiltresCategorie(listeCategories[i].id, listeCategories[i].name, viderliste);
+          C.getFilmsFiltresCategorie(window.listeCategories[i].id, window.listeCategories[i].name, viderliste);
         }
-        V.renderNavBar("C.handlerAbout()", "C.handlerHome()");
+        V.renderNavBar("C.handlerAbout()", "C.handlerHome()", "C.SelecProfil()");
+        C.SelecProfil();
       };
 
       // Vue (contient tout ce qui est relatif à l'affichage)
@@ -78,9 +173,9 @@
        * Elle sélectionne l'élément HTML avec l'ID "header" et y insère le contenu
        * formaté par le composant NavBar.
        */
-      V.renderNavBar = function (hAbout, hHome) {
+      V.renderNavBar = function (hAbout, hHome, cProfil) {
         let header = document.querySelector("#header");
-        header.innerHTML = NavBar.format(hAbout, hHome);
+        header.innerHTML = NavBar.format(hAbout, hHome, cProfil);
       };
 
       V.renderFilms = function (d, categorie, viderListe) {
@@ -92,6 +187,13 @@
       V.renderMovieDetail = function (d) {
         let content = document.querySelector("#MovieDetail");
         content.innerHTML = MovieDetail.format(d);
+      };
+
+      // profil
+      V.renderSelecProfil = function (d) {
+        let content = document.querySelector("#SelecProfil");
+        content.innerHTML = SelecProfil.format(d);
+        document.getElementById('SelecProfil').style.display = 'block';
       };
 
 
@@ -109,7 +211,8 @@
 
       // demander liste des films filtrés par categorie
       C.getFilmsFiltresCategorie = async function(id_categorie, categorie, viderListe = true){
-        let data = await Datafilms.getFilmsFiltresCategorie(id_categorie);
+        console.log('entree dans getFilmsFiltresCategorie');
+        let data = await Datafilms.getFilmsFiltresCategorie(id_categorie, C.age_minimal(window.profile));
         if (data.length == 0){
           data = [
             {"id":0,"name":"Pas de données","description":"", "image":"transparent.png"}
@@ -131,6 +234,7 @@
         console.log(data);
         V.renderMovieDetail(data);
         document.getElementById('MovieDetail').className = 'blockShow';
+        //document.getElementById('MovieDetail').style.visibility = 'visible';
       }
 
       // demander liste des categories
@@ -138,8 +242,50 @@
         let data = await Datafilms.getListCategories();
         console.log(data);
         return(data);
-      }      
+      }
 
+      // demander liste des categories
+      C.getProfiles = async function(){
+        let data = await DataProfile.getProfiles();
+        console.log(data);
+        return(data);
+      }
+
+      // demander liste des profils
+      C.SelecProfil = async function(){
+        console.log('Entree C.SelecProfil ');
+        let data = await DataProfile.getProfiles();
+        if (data.length == 0){
+          data = [
+            {"id":0,"name":"Pas de données","min_age":"", "photo":"pransparent.png"}
+          ];
+        }
+        window.profile_ref = data;
+        console.log(data);
+        V.renderSelecProfil(data);
+        document.getElementById('SelecProfil').className = 'blockShowP';
+      }
+
+      C.age_minimal = function(profile_id) {
+        var r = 0;
+        for(var i=0; i<window.profile_ref.length; i++) {
+          if (window.profile_ref[i].id == profile_id) {
+            r = window.profile_ref[i].min_age;
+            break;
+          }
+        }
+        return(r);
+      }
+
+      V.renderSelecProfilHide = function(profile_id) {
+        document.getElementById('SelecProfil').innerHTML='';
+        document.getElementById('SelecProfil').style.display='none';
+        window.profile = profile_id;
+        for(var i = 0; i < window.listeCategories.length; i++) {
+          var viderliste = (i == 0);
+          C.getFilmsFiltresCategorie(window.listeCategories[i].id, window.listeCategories[i].name, viderliste);
+        }
+      }
 
       C.start(); // Démarre l'application
     </script>

@@ -1,0 +1,56 @@
+
+
+
+
+<div class="choix_profile">
+    <rect id="ouverture-rectangle" width="100%" height="10rem" x="25" y="200" fill="red"></rect>
+
+    <animate xlink:href="#ouverture-rectangle"
+    attributeName="x"
+    from="50"
+    to="425"
+    dur="1s"
+
+    begin="click" />
+
+    <!-- <svg width="100%" height="100" xmlns="http://www.w3.org/2000/svg">
+        <circle width="100" height="100" style="fill:red;">
+            <animate
+            attributeName="cx"
+            begin="0s"
+            dur="8s"
+            from="50"
+            to="90%"
+            repeatCount="1" />
+        </circle>
+    </svg> -->
+
+    <article class="profiles"> 
+
+        <button class="selectp" onclick="window.V.renderSelecProfilHide({{profile1.id}})">
+            <!-- onclick="{{film1.handler}} -->
+
+            <img src="{{chemin}}/server/images/PhotoProfil/{{profile1.photo}}" height="100" class="profiles__photo"/>
+            <h2 class="profiles__name">{{profile1.name}}</h2>
+            <p class="profiles__age">{{profile1.min_age}}</p>
+        </button>
+
+        <img src="{{chemin}}/server/images/PhotoProfil/pransparent.png" class="profiles__separa"/>
+
+        <button class="selectp" onclick="window.V.renderSelecProfilHide({{profile2.id}})"> 
+            <img src="{{chemin}}/server/images/PhotoProfil/{{profile2.photo}}" height="100" class="profiles__photo"/>
+            <h2 class="profiles__name">{{profile2.name}}</h2>
+            <p class="profiles__age">{{profile2.min_age}}</p>
+        </button>
+
+        <img src="{{chemin}}/server/images/PhotoProfil/pransparent.png" class="profiles__separa"/>
+
+        <button class="selectp" onclick="window.V.renderSelecProfilHide({{profile3.id}})">
+            <img src="{{chemin}}/server/images/PhotoProfil/{{profile3.photo}}" height="100" class="profiles__photo"/>
+            <h2 class="profiles__name">{{profile3.name}}</h2>
+            <p class="profiles__age">{{profile3.min_age}}</p>
+        </button>
+    </article>
+
+    
+</div>
