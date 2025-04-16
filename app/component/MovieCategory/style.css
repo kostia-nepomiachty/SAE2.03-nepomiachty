@@ -28,6 +28,9 @@
   scrollbar-width: thin;
 }
 
+.lignefilm {
+  position: relative; /*favory*/
+}
 
 .sectfilm {
   width: 12.75rem;
@@ -59,6 +62,7 @@
   border-top-right-radius: 0.9375rem;
   border-top-left-radius: 0.9375rem;
   object-fit: cover;
+  
 }
 
 .tablo_titre {
@@ -88,6 +92,11 @@
   opacity: 80%;
 }
 
+.sectfilm__erigister { /*favory*/
+  position: absolute;;
+  padding-right: 3rem;
+}
+
 .blockHide {
   visibility: hidden;
 }
@@ -114,6 +123,7 @@
   height: auto;
 
 }
+
 
 
 

@@ -8,6 +8,15 @@
   height: 100%;
 }
 
+.choix_profile__titre {
+    padding-top: 5rem;
+    padding-bottom: 2rem;
+    text-align: center;
+    font-size: 5rem;
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: bold;
+    color: var(--color-bleu-with);
+}
 
 .ProfilHide {
     visibility: hidden;

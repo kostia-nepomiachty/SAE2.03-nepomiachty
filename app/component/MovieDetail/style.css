@@ -110,17 +110,35 @@
     padding-bottom: 0.2rem;
 }
 
+/* favory */
 .fack_play {
     width: 100%;
-    height: auto;
+    height: 2.5rem;
     border-radius: 15px;
     background-color: var(--color-buton);
 }
 
 .bouton_center {
-    padding-left: 15%;
-    padding-right: 15%;
+    display: flex;
+    padding-left: 2rem;
 }
+
+.bouton__favori {
+    cursor: pointer;
+}
+
+#bouton__favori_none {
+    display: block;
+    padding-left: 2rem;
+    padding-top: 0.5rem;
+    padding-right: 2rem;
+}
+
+#bouton__favori_block {
+    display: block;
+}
+
+/*________________________________________________*/
 
 .deroul__desci {
     padding-top: 0.8rem;

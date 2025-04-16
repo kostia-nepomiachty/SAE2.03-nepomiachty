@@ -57,14 +57,22 @@ $data = false;
     switch($todo){
       case 'readmovie':
         $categorie = '';
+        $profile = '';
         $min_age = '';
+        $favorite = '';
         if (isset($_REQUEST['categorie'])) {
           $categorie = $_REQUEST['categorie'];
+        }
+        if (isset($_REQUEST['profile'])) {
+          $profile = $_REQUEST['profile'];
         }
         if (isset($_REQUEST['min_age'])) {
           $min_age = $_REQUEST['min_age'];
         }
-        $data = liste_films($categorie, $min_age);
+        if (isset($_REQUEST['favorite'])) {
+          $favorite = $_REQUEST['favorite'];
+        }
+        $data = liste_films($categorie, $min_age, $profile, $favorite);
         break;
 
       case 'readMovieDetail':
@@ -99,6 +107,7 @@ $data = false;
         break;
 
       case 'updateProfile':
+        // HTTP verb = 'PUT'
         $data = json_decode(file_get_contents('php://input'), true);
         $id = (isset($data['id'])) ? $data['id'] : '';
         $name = (isset($data['name'])) ? $data['name'] : '';
@@ -118,6 +127,29 @@ $data = false;
       case 'readProfile':
         $id = (isset($_GET['id'])) ? $_GET['id'] : '';
         $data = read_profile($id);
+        break;
+
+      case 'readFavorite':
+        //error_log("[DEBUG #01] titre=".$name);
+        $id_profile = (isset($_GET['id_profile'])) ? $_GET['id_profile'] : '';
+        $id_movie = (isset($_GET['id_movie'])) ? $_GET['id_movie'] : '';
+        $data = readFavorite($id_profile, $id_movie);
+        break;
+
+      case 'addFavorite':
+        //error_log("[DEBUG #01] titre=".$name);
+        $id_profile = (isset($_POST['id_profile'])) ? $_POST['id_profile'] : '';
+        $id_movie = (isset($_POST['id_movie'])) ? $_POST['id_movie'] : '';
+        error_log("[DEBUG #02] id_profile=$id_profile, id_movie=$id_movie");
+        $data = addFavorite($id_profile, $id_movie);
+        break;
+
+      case 'deleteFavorite':
+        // HTTP verb = 'DELETE'
+        $data = json_decode(file_get_contents('php://input'), true);
+        $id_profile = (isset($data['id_profile'])) ? $data['id_profile'] : '';
+        $id_movie = (isset($data['id_movie'])) ? $data['id_movie'] : '';
+        $data = deleteFavorite($id_profile, $id_movie);
         break;
 
       default: // il y a un paramètre todo mais sa valeur n'est pas reconnue/supportée

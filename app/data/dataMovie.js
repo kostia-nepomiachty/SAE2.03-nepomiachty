@@ -39,9 +39,13 @@ Datafilms.request = async function () {
   return data;
 };
 
-Datafilms.getFilmsFiltresCategorie = async function (categorie, min_age) {
-  var param = min_age == "" ? "" : "&min_age=" + min_age;
-  let answer = await fetch(HOST_URL + "/server/script.php?todo=readmovie&categorie="+categorie+param);
+Datafilms.getFilmsFiltresCategorie = async function (categorie, min_age, profile, favorite = false) {
+  var param = (min_age == "") ? "" : "&min_age=" + min_age;
+  if (favorite) {
+    param += (param == '') ? '' : '&';
+    param += 'favorite=1';
+  }
+  let answer = await fetch(HOST_URL + "/server/script.php?todo=readmovie&categorie="+categorie+'profile='+profile+param);
   console.log("getFilmsFiltresCategorie GET "+HOST_URL + "/server/script.php?todo=readmovie&categorie="+categorie+param);
   let data = await answer.json();
   return data;
@@ -56,6 +60,49 @@ Datafilms.MovieDetail = async function (id) {
 Datafilms.getListCategories = async function () {
   let answer = await fetch(
     HOST_URL + "/server/script.php?todo=listCategories"
+  );
+  let data = await answer.json();
+  return data;
+};
+
+Datafilms.readFavorite = async function (id_profile, id_movie) {
+  let answer = await fetch(HOST_URL + "/server/script.php?todo=readFavorite&id_profile="+id_profile+'&id_movie='+id_movie);
+  let data = await answer.json();
+  return data;
+};
+
+Datafilms.addFavorite = async function (id_profile, id_movie) {
+  const formData = new URLSearchParams();
+  formData.append('id_profile', id_profile);
+  formData.append('id_movie', id_movie);
+
+  let config = {
+    method: "POST", // méthode HTTP à utiliser
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: formData.toString(), // données à envoyer sous forme d'objet FormData
+  };
+  let answer = await fetch(
+    HOST_URL + "/server/script.php?todo=addFavorite",
+    config
+  );
+  let data = await answer.json();
+  return data;
+};
+
+Datafilms.deleteFavorite = async function (id_profile, id_movie) {
+  let o = {}
+  o.id_profile = id_profile;
+  o.id_movie = id_movie;
+
+  let config = {
+    method: "DELETE", // méthode HTTP à utiliser
+    body: JSON.stringify(o), // données à envoyer sous forme d'objet FormData
+  };
+  let answer = await fetch(
+    HOST_URL + "/server/script.php?todo=deleteFavorite",
+    config
   );
   let data = await answer.json();
   return data;

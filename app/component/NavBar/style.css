@@ -1,5 +1,6 @@
 .navbar {
   width: 100%;
+  height: 10rem;
   position: sticky;
   top: 0;
   
@@ -8,6 +9,7 @@
 
 
   display: flex;
+  
   /* justify-content: space-between; */
   align-items: center;
   padding: 1rem 3rem;
@@ -45,6 +47,7 @@
 
 
 .retour-menu {
+  /* grid-column-start: 1; */
   display: block;
   width: auto;
   height: auto;
@@ -54,10 +57,11 @@
 }
 
 .avbar__list {
-
+  /* grid-column-start: 2; */
 }
 
 .selectp {
+  /* grid-column-start: 4; */
   background-color: rgba(255, 240, 240, 0);
   border-color: rgba(255, 240, 240, 0);
 }
@@ -68,12 +72,39 @@
   border-radius: 50%;
 }
 
-.petit {
-  display: none;
+/* favory */
+.navbar__favori {
+  /* grid-column-start: 3; */
+  padding-top: 1rem;
   display: flex;
-  justify-content: space-between;
-  background-color: brown;
+  flex-direction: row;
 }
+
+.favoris {
+  width: 65px;
+  height: 37px;
+  
+  
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0);
+  border-color: rgba(0, 0, 0, 0.894);
+}
+
+.etoil {
+
+}
+/*____________________________________________*/
+
+/* .petit {
+  
+  display: flex;
+  flex-direction: row;
+  grid: row;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  gap: 3px;
+} */
 
 
 @media only screen and (max-width: 499px) and (min-width: 10px) {
@@ -85,8 +116,15 @@
   }
 
   .petit {
-    display: block;
     display: flex;
+    grid: row;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 0px;
+  }
+
+  .retour-menu {
+    grid-row: 1;
   }
 }
 

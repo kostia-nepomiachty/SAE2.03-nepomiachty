@@ -21,6 +21,9 @@
     if (prod)
       HOST_URL = "https://nepomiachty-sae203.mmi-limoges.fr/";
     else HOST_URL = "http://sae2.03.localhost/";
+
+    let btn_fav_off = 'd="M14.0245 0.463523C14.1741 0.00286778 14.8259 0.00286992 14.9755 0.463525L17.98 9.71024C18.0469 9.91625 18.2389 10.0557 18.4555 10.0557H28.1781C28.6624 10.0557 28.8638 10.6755 28.472 10.9602L20.6062 16.675C20.431 16.8023 20.3577 17.028 20.4246 17.234L23.429 26.4807C23.5787 26.9414 23.0515 27.3245 22.6596 27.0398L14.7939 21.325C14.6186 21.1977 14.3814 21.1977 14.2061 21.325L6.34038 27.0398C5.94853 27.3245 5.42129 26.9414 5.57096 26.4807L8.5754 17.234C8.64234 17.028 8.56901 16.8023 8.39377 16.675L0.528044 10.9602C0.136187 10.6755 0.337576 10.0557 0.821937 10.0557H10.5445C10.7611 10.0557 10.9531 9.91625 11.02 9.71024L14.0245 0.463523Z" fill="#050c15"';
+    let btn_fav_on = 'd="M14.0245 0.463523C14.1741 0.00286778 14.8259 0.00286992 14.9755 0.463525L17.98 9.71024C18.0469 9.91625 18.2389 10.0557 18.4555 10.0557H28.1781C28.6624 10.0557 28.8638 10.6755 28.472 10.9602L20.6062 16.675C20.431 16.8023 20.3577 17.028 20.4246 17.234L23.429 26.4807C23.5787 26.9414 23.0515 27.3245 22.6596 27.0398L14.7939 21.325C14.6186 21.1977 14.3814 21.1977 14.2061 21.325L6.34038 27.0398C5.94853 27.3245 5.42129 26.9414 5.57096 26.4807L8.5754 17.234C8.64234 17.028 8.56901 16.8023 8.39377 16.675L0.528044 10.9602C0.136187 10.6755 0.337576 10.0557 0.821937 10.0557H10.5445C10.7611 10.0557 10.9531 9.91625 11.02 9.71024L14.0245 0.463523Z" fill="#ffc000"';
     </script>
 
     <style>
@@ -151,17 +154,27 @@
         window.location.href = HOST_URL + 'app/'
       };
 
-
       C.start = async function () {
         //C.getFilms();
         window.listeCategories = await C.getCategories();
         for(var i = 0; i < window.listeCategories.length; i++) {
           var viderliste = (i == 0);
-          C.getFilmsFiltresCategorie(window.listeCategories[i].id, window.listeCategories[i].name, viderliste);
+          C.getFilmsFiltresCategorie(window.listeCategories[i].id, window.listeCategories[i].name, false, viderliste);
         }
-        V.renderNavBar("C.handlerAbout()", "C.handlerHome()", "C.SelecProfil()");
+        V.renderNavBar("C.handlerAbout()", "C.handlerHome()", "C.SelecProfil()", "C.FilmsFavorisFiltresCategorie()");
         C.SelecProfil();
       };
+
+      C.FilmsFavorisFiltresCategorie = async function () {
+        window.listeCategories = await C.getCategories();
+        for(var i = 0; i < window.listeCategories.length; i++) {
+          var viderliste = (i == 0);
+          C.getFilmsFiltresCategorie(window.listeCategories[i].id, window.listeCategories[i].name, true, viderliste);
+        }
+        V.renderNavBar("C.handlerAbout()", "C.handlerHome()", "C.SelecProfil()", "C.FilmsFavorisFiltresCategorie()");
+      };
+
+
 
       // Vue (contient tout ce qui est relatif à l'affichage)
       window.V = {};
@@ -173,9 +186,9 @@
        * Elle sélectionne l'élément HTML avec l'ID "header" et y insère le contenu
        * formaté par le composant NavBar.
        */
-      V.renderNavBar = function (hAbout, hHome, cProfil) {
+      V.renderNavBar = function (hAbout, hHome, cProfil, hFavoris) {
         let header = document.querySelector("#header");
-        header.innerHTML = NavBar.format(hAbout, hHome, cProfil);
+        header.innerHTML = NavBar.format(hAbout, hHome, cProfil, hFavoris);
       };
 
       V.renderFilms = function (d, categorie, viderListe) {
@@ -184,9 +197,9 @@
         content.innerHTML = content.innerHTML + GridFilm.formatMany(d, categorie);
       };
 
-      V.renderMovieDetail = function (d) {
+      V.renderMovieDetail = function (d, is_favorite, handleraddFavorite, handlerdeleteFavorite) {
         let content = document.querySelector("#MovieDetail");
-        content.innerHTML = MovieDetail.format(d);
+        content.innerHTML = MovieDetail.format(d, is_favorite, handleraddFavorite, handlerdeleteFavorite); 
       };
 
       // profil
@@ -210,9 +223,9 @@
       }
 
       // demander liste des films filtrés par categorie
-      C.getFilmsFiltresCategorie = async function(id_categorie, categorie, viderListe = true){
+      C.getFilmsFiltresCategorie = async function(id_categorie, categorie, uniquementFavoris, viderListe = true){
         console.log('entree dans getFilmsFiltresCategorie');
-        let data = await Datafilms.getFilmsFiltresCategorie(id_categorie, C.age_minimal(window.profile));
+        let data = await Datafilms.getFilmsFiltresCategorie(id_categorie, C.age_minimal(window.profile), window.profile, uniquementFavoris);
         if (data.length == 0){
           data = [
             {"id":0,"name":"Pas de données","description":"", "image":"transparent.png"}
@@ -226,15 +239,32 @@
       // demander un film
       C.MovieDetail = async function(id){
         let data = await Datafilms.MovieDetail(id);
+        let is_favorite = 0;
         if (data.length == 0){
           data = [
             {"id":0,"name":"Pas de données","description":"", "image":"transparent.png"}
           ];
+        } else {
+          let r = await Datafilms.readFavorite(window.profile, id); //id_profile, id_movie
+          is_favorite = r.is_favorite;
         }
+
         console.log(data);
-        V.renderMovieDetail(data);
+        V.renderMovieDetail(data, is_favorite, "C.addFavorite(1)", "C.deleteFavorite(1)");
         document.getElementById('MovieDetail').className = 'blockShow';
         //document.getElementById('MovieDetail').style.visibility = 'visible';
+      }
+
+      C.addFavorite = async function(id_profile, id_movie){
+        let data = await Datafilms.addFavorite(id_profile, id_movie);
+        console.log(data);
+        C.MovieDetail(id_movie);
+      }
+
+      C.deleteFavorite = async function(id_profile, id_movie){
+        let data = await Datafilms.deleteFavorite(id_profile, id_movie);
+        console.log(data);
+        C.MovieDetail(id_movie);
       }
 
       // demander liste des categories
@@ -283,7 +313,7 @@
         window.profile = profile_id;
         for(var i = 0; i < window.listeCategories.length; i++) {
           var viderliste = (i == 0);
-          C.getFilmsFiltresCategorie(window.listeCategories[i].id, window.listeCategories[i].name, viderliste);
+          C.getFilmsFiltresCategorie(window.listeCategories[i].id, window.listeCategories[i].name, false, viderliste);
         }
       }
 

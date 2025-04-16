@@ -5,7 +5,7 @@ let template = await templateFile.text();
 let MovieDetail = {};
 
 
-MovieDetail.format = function (m) {
+MovieDetail.format = function (m, is_favorite, handleraddFavorite, handlerdeleteFavorite) {
     let html = template;
     html = html.replaceAll("{{chemin}}", '');
     html = html.replace("{{titre}}", m.name);
@@ -17,6 +17,12 @@ MovieDetail.format = function (m) {
     html = html.replace("{{categorie}}", m.category);
     html = html.replace("{{desci}}", m.description);
     html = html.replace("{{ilustra}}", m.image);
+    let btn = (is_favorite == 0) ? btn_fav_off : btn_fav_on;
+    let handlerFav = (is_favorite == 0) ? handleraddFavorite : handlerdeleteFavorite;
+    handlerFav = handlerFav.replace('1', window.profile + ',' + m.id);
+    html = html.replace("{{btn_fav}}", btn);
+    html = html.replace("{{handlerFav}}", handlerFav);
+    
     return html;
 };
 
