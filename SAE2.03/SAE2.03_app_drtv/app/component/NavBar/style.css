@@ -1,0 +1,87 @@
+/* changemant */
+
+.navbar {
+  width: 100%;
+  height: auto;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem;
+  color: var(--color-noire);
+  background-color: var(--color-blanc);
+  text-transform: uppercase;
+  font-family: var(--ff-DR);
+}
+
+.logo_haut {
+  width: 2.4rem;
+}
+
+.logo_haut__img {
+  width: 2.4rem;
+  height: 2.4rem; 
+}
+
+.navb__list {
+  width: auto;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+.list__ligne {
+  cursor: pointer;
+}
+
+.list__ligne:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--color-noire);
+}
+
+.list__menu {
+  background-color: rgba(255, 255, 255, 0);
+  border-color: rgba(255, 255, 255, 0);
+}
+
+.list__c {
+  background-color: rgba(255, 255, 255, 0);
+  border-color: rgba(255, 255, 255, 0);
+}
+
+.list__favoris {
+  background-color: rgba(255, 255, 255, 0);
+  border-color: rgba(255, 255, 255, 0);
+}
+
+.navb__profil {
+  width: auto;
+  height: 2.5rem;
+  white-space: nowrap;
+}
+
+.profil__log {
+  width: 6.25rem;
+  display: flex;
+  color: var(--color-blanc);
+  background-color: var(--color-rouge);
+  border-color: rgba(255, 255, 255, 0);
+}
+
+.profil__log_texte {
+  margin-top: 10px;
+}
+
+.secte_profile {
+  width: 38px;
+  height: 38px;
+  border-radius: 100%;
+}
+
+@media only screen and (max-width: 800px) and (min-width: 10px) {
+  .navbar {
+    padding: 1rem 1rem;
+  }
+}

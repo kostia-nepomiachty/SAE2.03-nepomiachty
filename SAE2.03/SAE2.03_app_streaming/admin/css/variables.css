@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap");
+
+:root {
+  /* Primitive Tokens */
+  --color-black: hsl(253, 69%, 8%);
+  --color-white: hsl(0, 0%, 100%);
+  --color-gray-light: hsl(0, 0%, 80%);
+  --color-gray: hsl(0, 0%, 50%);
+  --color-gray-dark: hsl(0, 0%, 20%);
+  --color-green: hsl(120, 100%, 37%);
+
+  --ff-sans: "DM sans", sans-serif;
+
+  /* Sementic Tokens */
+  --color-fg: var(--color-white);
+  --color-bg: var(--color-gray-dark);
+  --color-accent: var(--color-green);
+
+    /* Color décore\élements */
+  --color-bleu-black: hsl(215, 62.9%, 13.7%);
+  --color-bleu-moins-black: hsl(215, 53%, 17%);
+  --color-bleu: hsl(216, 64.8%, 24.5%);
+  --color-bleu-with: hsl(193, 37.2%, 83.1%);
+  --color-rouge-black: hsl(354, 66.4%, 26.9%);
+  --color-rouge-with: hsl(353, 52.6%, 50.4%);
+  
+  --color-barre-nave: hsl(354, 75%, 11%);
+  --color-buton: hsl(353, 73%, 45%);
+}

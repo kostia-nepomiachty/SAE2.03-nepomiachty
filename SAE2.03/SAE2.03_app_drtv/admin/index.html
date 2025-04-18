@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+  <head>
+    <title>SAE2.03 ADMIN</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/base.css" />
+    <script>
+     // https://nepomiachty-sae203.mmi-limoges.fr/
+    let chemin = ''; 
+    let prod = document.location.href.search("mmi-limoges.fr") > -1;
+    let HOST_URL = "";
+    if (prod) {
+      HOST_URL = "https://nepomiachty-sae203.mmi-limoges.fr/SAE2.03_app_drtv/";
+      chemin = '/SAE2.03_app_drtv/';
+    }
+    else {
+      HOST_URL = "http://sae2.03.localhost/SAE2.03_app_drtv/";
+      chemin = '/SAE2.03_app_drtv/';
+    }
+    </script>
+  </head>
+  <body>
+    <section id="log"></section>
+    <section id="moviee"></section>
+    <section id="profile"></section>
+    <section id="listeProfile"></section>
+    <section id="mprofile"></section>
+
+    <script type="module">
+      import { Log } from "./component/Log/script.js";
+      import {Newfilm} from './component/Newfilm/script.js';
+      import {ProfileForm} from './component/ProfileForm/script.js';
+      import { DataMovie } from "./data/dataMovie.js";
+      import { DataProfile } from "./data/dataProfile.js";
+      import { ProfileModif } from "./component/ProfileModif/script.js";
+      import { ProfileList } from "./component/ProfileList/script.js";
+
+      window.C = {};
+
+
+      C.handlerCreate = async function() {
+        let form = document.querySelector('.AF__form');
+        let fd = new FormData(form);
+        if (
+            (fd.get('titre') == '') || (fd.get('nom') == '') || (fd.get('annee') == '') || (fd.get('duree') == '') || 
+            (fd.get('desci') == '') || (fd.get('categorie') == '') || (fd.get('ilustra') == '') || (fd.get('lienyt') == '') || 
+            (fd.get('age') == '')
+        ) {
+          V.renderLog('Veuillez remplir tous les champs du film');
+          return;
+        }
+        let res = await DataMovie.add(fd);
+        V.renderLog(res);
+      }  
+
+      C.handlerProfileCreate = async function() {
+        let form1 = document.querySelector('.PF__form');
+        let fd1 = new FormData(form1);
+        if (
+            (fd1.get('name') == '') || (fd1.get('min_age') == '') || (fd1.get('photo') == '') 
+        ) {
+          V.renderLog('Veuillez remplir tous les champs du profil');
+          return;
+        }
+        let res1 = await DataProfile.add(fd1);
+        V.renderLog(res1);
+      }
+
+      C.handlerProfileUpdate = async function() {
+        let form1 = document.querySelector('.PM__form');
+        let fd1 = new FormData(form1);
+        if (
+            (fd1.get('name') == '') || (fd1.get('min_age') == '') || (fd1.get('photo') == '') 
+        ) {
+          V.renderLog('Veuillez remplir tous les champs du profil');
+          return;
+        }
+        let res1 = await DataProfile.update(fd1);
+        console.log('Profil mis à jour');
+        //V.renderLog(res1);
+      }
+
+      C.handlerUpdate = async function() {
+            
+        let form = document.querySelector('.AF__form');
+
+        let fd = new FormData(form);
+
+        let res = await Datafilms.update(fd);
+        V.renderLog(res);
+      }
+
+
+      C.handlerProfileEdit = async function(profile_id) {
+        let d = await DataProfile.getProfile(profile_id); 
+        V.renderUpdateProfile('C.handlerProfileUpdate()', d);
+      }
+
+
+
+      C.start = function () {
+        V.renderLog("Démarrage de l'application");
+        V.renderNewFilm("C.handlerCreate()");
+        V.renderNewProfile("C.handlerProfileCreate()");
+        V.renderListProfile("C.handlerProfileEdit('1')");
+      };
+
+      window.V = {};
+
+      V.renderLog = function (txt) {
+        let content = document.querySelector("#log");
+        content.innerHTML = Log.format(txt);
+      };
+
+      V.renderNewFilm = function(handler){
+            let content = document.querySelector('#moviee');
+            content.innerHTML = Newfilm.format(handler); // ici "Newfilm"
+      }
+
+      V.renderNewProfile = function(handler){
+            let content = document.querySelector('#profile');
+            content.innerHTML = ProfileForm.format(handler); // ici "profile"
+      }
+
+      V.renderUpdateProfile = function(handler, d){
+            let content = document.querySelector('#mprofile');
+            content.innerHTML = ProfileModif.format(handler, d); 
+      }
+
+      V.renderListProfile = async function(handler){
+            let d = await DataProfile.getProfiles(); 
+            let content = document.querySelector('#listeProfile');
+            console.log(d);
+            content.innerHTML = ProfileList.format(d, handler); 
+      }
+
+
+      // V.renderNewMenu = function(pandler){
+      //   let content = document.querySelector('#profile');
+      //   content.innerHTML = ProfileFrom.format(pandler); // ici "ProfileFrom"
+      // }
+
+      C.start();
+    </script>
+    <?php 
+    echo $message; 
+    ?>
+  </body>
+</html>

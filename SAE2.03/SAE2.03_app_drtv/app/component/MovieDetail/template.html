@@ -1,0 +1,52 @@
+
+<div class="deroul">
+    <div class="deroul__ilustra1">
+        <img src="{{chemin}}/server/images/{{ilustra}}" height="100" class="deroul__image"/>
+    </div>
+
+    <div class="pading">
+    <article class="deroul__sectfilm">
+        <div class="tablo_header">
+            <button class="head_retour" onclick="{{hbtn_fermer}}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 40 40" fill="none">
+                <path d="M16.6667 31.6668L5 20.0002M5 20.0002L16.6667 8.3335M5 20.0002L35 20.0002" stroke="#1B1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+
+            <h1 class="deroul__titre">{{titre}}</h1>
+        </div>
+
+        <p class="deroul__duree">Durée {{duree}} mn</p>
+        
+            <iframe class="deroul__lienyt" src="https://www.youtube.com/embed/{{lienyt}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        
+        <div class="deroul__info">
+            <p class="info__nom">Réalisateur {{nom}}</p>
+            <p class="info__age">Recommandation +{{age}} ans</p>
+            <p class="info__annee">Date de sortie {{annee}}</p>
+            <p class="info__categorie">Genre {{categorie}}</p>
+            <p class="info__5"></p> <!-- enticiper la note -->
+            <p class="info__6"></p> <!-- enticiper le comentaire -->
+        </div>
+
+        <div class="bouton_center">
+            <button class="fack_play"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M23 12C23 10.965 22.47 9.93 21.409 9.353L8.597 2.385C6.534 1.264 4 2.724 4 5.033V12H23Z" fill="#721720"/>
+                <path opacity="0.5" d="M8.597 21.615L21.409 14.647C21.89 14.3924 22.2923 14.0113 22.5727 13.5448C22.8531 13.0784 23.0008 12.5442 23 12H4V18.967C4 21.277 6.534 22.736 8.597 21.615Z" fill="#D7D7D7"/>
+                </svg>
+            </button>
+
+            <label class="bouton__favori" onclick="{{handlerFav}}"> <!-- favory -->
+                <svg id="bouton__favori_block">
+                    <path {{btn_fav}}/>
+                </svg>
+            </label>
+        </div>
+        <div class="deroul__ilustra">
+            <p class="deroul__desci">{{desci}}</p>
+            
+        </div>
+    </article>
+    </div>
+</div>
+

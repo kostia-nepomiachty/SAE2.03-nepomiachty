@@ -1,0 +1,51 @@
+/* @import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap'); */
+
+@font-face {
+  font-family: DRPublik-Regular;
+  src: url('../../server/fonts/DRPublik-Regular.woff2');
+}
+
+@font-face {
+  font-family: DRPublik-SemiBold;
+  src: url('../../server/fonts/DRPublik-SemiBold.woff2');
+}
+
+@font-face {
+  font-family: DRPublik-Bold;
+  src: url('../../server/fonts//DRPublik-Bold.woff');
+}
+
+:root {
+  /* Primitive Tokens */
+  --color-black: hsl(253, 69%, 8%);
+  --color-white: hsl(0, 65%, 10%);
+  --color-gray-light: hsl(0, 0%, 80%);
+  --color-gray: hsl(0, 0%, 50%);
+  --color-gray-dark: hsl(0, 0%, 20%);
+  --ff-sans: "DM sans", sans-serif;
+
+  /* Sementic Tokens */
+  --color-fg: var(--color-white);
+  --color-bg: var(--color-gray-dark);
+
+
+  /*couleur base*/
+  --color-noire: hsl(253, 69%, 8%);
+  --color-blanc: hsl(0, 0%, 100%);
+  --color-rouge: hsl(353, 100%, 50%);
+  --color-buton: hsl(353, 73%, 45%);
+  
+  /*couleur secondaire*/
+  --color-carou-vert: hsl(150, 33.3%, 35.3%);
+  --color-carou-bleu: hsl(180, 100%, 91.2%);
+  --color-svg-rouge: hsl(326, 88.9%, 14.1%);
+  --color-gris-font: hsl(15, 14.3%, 94.5%);
+
+  /*Typo texte*/
+  --ff-DR: "DRPublik-Bold", sans-serif;
+  --ff-DR-tv: "DRPublik-Regular", sans-serif;
+}
+

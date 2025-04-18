@@ -1,0 +1,100 @@
+/* Changement fini*/
+
+.fin_logohaut {
+    height: 1.5rem;
+    width: 5rem;
+    float: left;
+    margin-top: 1.5rem;
+    margin-left: 2.5rem;
+    background-color: red;
+}
+
+.fin_contener {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Publik', sans-serif;
+    color: var(--color-noire);
+}
+
+.fin__colone {
+    padding-right: 1rem;
+    display: inline-block;
+    vertical-align: top;
+    text-align: left;
+}
+
+.colone__titre {
+    font-size: 1rem;
+    font-family: var(--ff-DR);
+}
+
+.colone__texte {
+    font-size: 1rem;
+    margin: -0.625rem;
+    padding: 0.625rem;
+    margin-right: 0;
+    font-weight: inherit;
+    opacity: 70%;
+    font-family: var(--ff-DR-tv);
+}
+
+.fin_logobas {
+    width: 10.625rem;
+    height: 7.8125rem;
+    float: right;
+    margin-bottom: 1.5rem;
+    margin-right: 2.5rem;
+    background-color: red;
+}
+
+.logohaut__img2 {
+    width: 10.625rem;
+    height: 7.8125rem;
+}
+
+.fin_credit {
+    font-size: 1rem;
+    margin-left: 2.5rem;
+    text-transform: uppercase;
+    font-family: 'Publik', sans-serif;
+    color: var(--color-noire);
+}
+
+.credit__cepara {
+    visibility: visible;
+    padding-left: 0.7rem;
+    padding-right: 0.5rem;
+    word-wrap: break-word;
+}
+
+.fin_nom {
+    font-size: 1rem;
+    float: right;
+    margin-bottom: 1.5rem;
+    margin-right: 2.5rem;
+    text-transform: uppercase;
+    font-family: 'Publik', sans-serif;
+    color: var(--color-noire);
+}
+
+.fin_ligne {
+    width: 100%;
+    height: 100px;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+}
+
+@media only screen and (max-width: 800px) and (min-width: 10px) {
+    .fin_credit {
+        text-align: center;
+    }
+
+    .credit__cepara {
+        visibility: hidden;
+    }
+
+}

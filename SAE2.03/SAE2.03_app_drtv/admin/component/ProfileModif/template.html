@@ -1,0 +1,12 @@
+
+<div class="PM">
+    <form class="PM__form" name="PM__form" id="PM__form">
+        <h2 class="PM__title"># Modifier les profils</h2>
+        NE PAS CHANGER ! <input required type="number" name="id" placeholder="Saisir l'ID du profil" value="{{id}}" readonly>
+        Saisir le nouveau nom de profil: <input required type="text" name="name" placeholder="Saisir le nom de profil" value="{{name}}">
+        Saisir le nouvel age de restriction: <input required type="number" name="min_age" placeholder="Saisir l'age de restriction" value="{{min_age}}">
+        Saisir le nouveau nom du fichier image du profil: <input required type="text" name="photo" placeholder="Saisir le nom du fichier image du profil" value="{{photo}}">
+
+        <input onclick="{{handler}}" type="button" value="Mis a jour" name="todo">
+    </form>
+</div> 

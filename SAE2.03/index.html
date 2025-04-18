@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>SAE2.03 APP</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./css/base.css" />
+        
+        <style>
+            
+
+/* CSS */
+            .button-85 {
+                padding: 0.6em 2em;
+                border: none;
+                outline: none;
+                color: rgb(255, 255, 255);
+                background: #111;
+                cursor: pointer;
+                position: relative;
+                z-index: 0;
+                border-radius: 10px;
+                user-select: none;
+                -webkit-user-select: none;
+                touch-action: manipulation;
+            }
+
+            .button-85:before {
+                content: "";
+                background: linear-gradient(
+                    45deg,
+                    #ff0000,
+                    #ff7300,
+                    #fffb00,
+                    #48ff00,
+                    #00ffd5,
+                    #002bff,
+                    #7a00ff,
+                    #ff00c8,
+                    #ff0000
+                );
+                position: absolute;
+                top: -2px;
+                left: -2px;
+                background-size: 400%;
+                z-index: -1;
+                filter: blur(5px);
+                -webkit-filter: blur(5px);
+                width: calc(100% + 4px);
+                height: calc(100% + 4px);
+                animation: glowing-button-85 20s linear infinite;
+                transition: opacity 0.3s ease-in-out;
+                border-radius: 10px;
+            }
+
+            @keyframes glowing-button-85 {
+                0% {
+                    background-position: 0 0;
+                }
+                50% {
+                    background-position: 400% 0;
+                }
+                100% {
+                    background-position: 0 0;
+                }
+            }
+
+            .button-85:after {
+                z-index: -1;
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: #222;
+                left: 0;
+                top: 0;
+                border-radius: 10px;
+            }
+
+            .chemin__titre {
+                font-size: 5rem;
+                text-align: center;
+                padding-top: 5rem;
+                padding-bottom: 3rem;
+                font-family: "Space Grotesk", sans-serif;
+                color: rgb(244, 247, 248);
+            }
+
+            .chemin___encemble_b {
+                display: flex;
+                padding-left: 20%;
+                padding-right: 20%;
+                justify-content: space-between;
+            }
+
+            .bodye {
+                background-color: #232323;
+            }
+
+            #cursor-svg {
+                position: absolute;
+                pointer-events: none;
+            }
+        </style>
+
+        <script>
+            document.addEventListener('mousemove', function(event) {
+                const svg = document.getElementById('cursor-svg');
+                svg.style.left = `${event.clientX}px`;
+                svg.style.top = `${event.clientY}px`;
+            });
+
+            document.addEventListener('mousemove', function(event) {
+                const svg = document.getElementById('cursor-svg1');
+                svg.style.left = `${event.clientX}px`;
+                svg.style.top = `${event.clientY}px`;
+            });
+
+            document.addEventListener('mousemove', function(event) {
+                const svg = document.getElementById('cursor-svg2');
+                svg.style.left = `${event.clientX}px`;
+                svg.style.top = `${event.clientY}px`;
+            });
+
+            const idNames = ["cursor-svg", "cursor-svg1", "cursor-svg2"];
+                let currentIndex = 0;
+
+                setInterval(() => {
+                const svg = document.getElementById(idNames[currentIndex]);
+                currentIndex = (currentIndex + 1) % idNames.length; // Pour passer au prochain nom
+                if (svg) {
+                    svg.id = idNames[currentIndex]; // Change l'ID à la prochaine valeur
+                    console.log(`ID changé en: ${svg.id}`); // Affiche l'ID actuel
+                }
+                }, 1000);
+        </script>
+    </head>
+    <body class="bodye">
+        <h1 class="chemin__titre">SAÉ 2.03</br>Concevoir un site avec une source de données</h1>
+        <div class="chemin___encemble_b">
+            <button class="button-85" role="button" onclick="window.location='SAE2.03_app_streaming/app/'">projet 1</button>
+            <button class="button-85" role="button" onclick="window.location='SAE2.03_app_streaming/admin/'">Projet 1 admin</button>
+            <button class="button-85" role="button" onclick="window.location='SAE2.03_app_drtv/app/'">Projet 2</button>
+        </div>
+        <svg id="cursor-svg" width="50" height="50" viewBox="0 0 50 50">
+            <circle cx="25" cy="25" r="20" fill="#f4f7f8"/>
+            <path d="M4 7V17C4 19.2091 7.58172 21 12 21C16.4183 21 20 19.2091 20 17V7M4 7C4 9.20914 7.58172 11 12 11C16.4183 11 20 9.20914 20 7M4 7C4 4.79086 7.58172 3 12 3C16.4183 3 20 4.79086 20 7M20 12C20 14.2091 16.4183 16 12 16C7.58172 16 4 14.2091 4 12" stroke="#C12B37" stroke-width="2"/>
+        </svg>
+        <svg id="cursor-svg" width="50" height="50" viewBox="0 0 50 50">
+            <circle cx="25" cy="25" r="20" fill="#f4f7f8"/>
+            <path d="M5 19C3.89543 19 3 18.1046 3 17V7C3 5.89543 3.89543 5 5 5H9L11 7H15C16.1046 7 17 7.89543 17 9V10M5 19H19C20.1046 19 21 18.1046 21 17V12C21 10.8954 20.1046 10 19 10H9C7.89543 10 7 10.8954 7 12V17C7 18.1046 6.10457 19 5 19Z" stroke="#FFC000" stroke-width="2" stroke-linecap="round"/></svg>
+            <svg><path d="M5 12H19M5 12C3.89543 12 3 11.1046 3 10V6C3 4.89543 3.89543 4 5 4H19C20.1046 4 21 4.89543 21 6V10C21 11.1046 20.1046 12 19 12M5 12C3.89543 12 3 12.8954 3 14V18C3 19.1046 3.89543 20 5 20H19C20.1046 20 21 19.1046 21 18V14C21 12.8954 20.1046 12 19 12M17 8H17.01M17 16H17.01" stroke="#0069D1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <svg id="cursor-svg" width="50" height="50" viewBox="0 0 50 50">
+            <circle cx="25" cy="25" r="20" fill="#f4f7f8"/>
+            <path d="M5 12H19M5 12C3.89543 12 3 11.1046 3 10V6C3 4.89543 3.89543 4 5 4H19C20.1046 4 21 4.89543 21 6V10C21 11.1046 20.1046 12 19 12M5 12C3.89543 12 3 12.8954 3 14V18C3 19.1046 3.89543 20 5 20H19C20.1046 20 21 19.1046 21 18V14C21 12.8954 20.1046 12 19 12M17 8H17.01M17 16H17.01" stroke="#0069D1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <script src="script.js"></script>
+    </body>
+</html>

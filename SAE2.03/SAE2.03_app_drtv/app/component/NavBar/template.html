@@ -1,0 +1,38 @@
+<nav class="navbar font-sans">
+
+  <ul class="logo_haut">
+    <img class="logo_haut__img" src="{{chemin}}/server/images/Logos/logo_dr-tv.png"/>
+  </ul>
+
+  <ul class="navb__list">
+    <button class="list__menu list__ligne" onclick="{{hHome}}">HOME</button>
+  </ul>
+    
+  <ul class="navb__list">
+    <select class="list__c list__ligne" name="categorie" id="categorie" onclick="{{hCategorie}}">
+      <option class="list__categ" value="">Type de film</option>
+      <option class="list__categ" value="1">Action</option>
+      <option class="list__categ" value="2">Comédie</option>
+      <option class="list__categ" value="3">Drame</option>
+      <option class="list__categ" value="4">Science-fiction</option>
+      <option class="list__categ" value="5">Animation</option>
+      <option class="list__categ" value="6">Thriller</option>
+      <option class="list__categ" value="7">Horreur</option>
+      <option class="list__categ" value="8">Aventure</option>
+      <option class="list__categ" value="9">Fantaisie</option>
+      <option class="list__categ" value="10">Documentaire</option>
+    </select>
+  </ul>
+    
+  <ul class="navb__list">
+    <button class="list__favoris list__ligne" onclick="{{hFavoris}}">Favoris</button>
+  </ul>
+
+  <ul class="navb__profil">
+    <button class="profil__log" onclick="{{cProfil}}">
+      <p class="profil__log_texte">Log ind&nbsp;&nbsp;</p>
+      <img src="{{chemin}}/server/images/PhotoProfil/{{profilephoto}}" height="100" class="secte_profile"/>
+    </button>
+  </ul> 
+</nav>
+

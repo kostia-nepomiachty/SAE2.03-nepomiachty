@@ -1,0 +1,441 @@
+
+
+
+/* .scroll{
+    display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  padding-left: 2rem;
+  padding-top: 2rem;
+} */
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  gap: 0.25rem;
+
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  padding-left: 2rem;
+  padding-top: 2rem;
+
+  scrollbar-color: hsla(312, 18%, 84%, 0.14) rgba(0, 128, 0, 0);
+  scrollbar-width: thin;
+}
+
+.lignefilm {
+  position: relative; /*favory*/
+}
+
+.sectfilm {
+  width: 12.75rem;
+  height: auto;
+  flex-shrink: 0;
+  flex-direction: column;
+  border-radius: 0.9375rem;
+  background-color: var(--color-bleu-moins-black);
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+
+.sectfilm:hover {
+  box-shadow: 0 0 15px rgba(221, 180, 254, 0.75);
+}
+
+.conteneurlignefilm {
+  display: flex;
+}
+
+.sectfilm__ilustra {
+  width: 12.75rem;
+  height: 22.25rem;
+  border-top-right-radius: 0.9375rem;
+  border-top-left-radius: 0.9375rem;
+  object-fit: cover;
+  
+}
+
+.tablo_titre {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 0px;
+}
+
+.sectfilm__titre {
+  font-size: auto;
+  padding-left: 0.5rem;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: bold;
+  color: var(--color-bleu-with);
+}
+
+.sectfilm__desci {
+  font-size: 0.5rem;
+  /* padding-left: 0.5rem;
+  padding-right: 0.5rem; */
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  display: block;
+  color: var(--color-bleu-with);
+  opacity: 80%;
+}
+
+.sectfilm__erigister { /*favory*/
+  position: absolute;
+  padding-right: 3rem;
+}
+
+.blockHide {
+  visibility: hidden;
+}
+
+.sectfilms__descis {
+  padding-left: 0.5rem;
+  font-family: var(--ff-DR-tv);
+}
+
+/* MovieDetail */
+.blockShow {
+  visibility: visible;
+  z-index: 100;
+  float: right;
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 77px;
+  border-left: 0.2em solid var(--color-bleu-moins-black);
+  border-bottom: 0.2em solid var(--color-bleu-moins-black);
+  padding: 1rem 1rem 1rem 1rem ;
+  background-color: var(--color-bleu);
+  
+}
+
+.head_retour {
+  width: auto;
+  height: auto;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .title {
+  font-size: 1.5rem;
+  font-family: "Space Grotesk", sans-serif;
+} */
+
+/*.sectfilm__ilustra {
+  width: 304px;
+  height: 456px;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  /* width: 40px;
+  height: 200px; *
+}*/
+
+
+
+
+/*.parent {
+  /* display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  gap: 8px; * /
+
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  gap: 4px;
+
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth; 
+}* /
+
+ .parent .sectfilm {
+  scroll-snap-align: start;
+} 
+
+ .scroling svg{
+color: deeppink;
+border-radius: 50%;
+display: inline-flex;
+padding: 5px 10px;
+text-decoration: none;
+} 
+
+ .slides {
+    /* display: flex;
+    transition: transform 0.5s ease-in-out; * /
+}
+
+/* .slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    background-color: white;
+    text-align: center;
+} * /
+
+@media only screen and (max-width: 499px) and (min-width: 10px) {
+  .sectfilm__desci {
+    display: none;
+  }
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /* html {
+  scroll-behavior: smooth;
+}
+.wrapper section{
+    width: 100%;
+    position: relative;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3,100%);
+  overflow:hidden;
+  scroll-behavior: smooth;
+
+  section {
+    width: 100%;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    margin: 20px 0;
+    
+    .item {
+      position: relative;
+      padding: 0 2px;
+      transition: var(--duration) all;
+      
+      &:hover { 
+        margin: 0 40px;
+        transform: scale(1.2);
+      }
+
+
+      .heading {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        color: #fff;
+      }
+
+      .duration {
+        position: absolute;
+        bottom: 0;
+        left: 20px;
+        color: #fff;
+      }
+      
+    }
+
+    .arrow__btn {
+      position: absolute;
+      color: #fff;
+      text-decoration: none;
+      font-size: 6em;
+      background:rgb(0,0,0);
+      width: 80px;
+      padding: 20px;
+      text-align: center;
+      z-index: 1;
+    }
+
+    .left-arrow {
+      top:0; bottom:0; left:0;
+      background: linear-gradient(-90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+    }
+    
+    .right-arrow {
+      top:0; bottom:0; right: 0;
+      background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+    }
+
+  }
+};  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+#slide1:checked ~ .slides {
+    transform: translateX(0);
+}
+
+#slide2:checked ~ .slides {
+    transform: translateX(-10%);
+}
+
+#slide3:checked ~ .slides {
+    transform: translateX(-20%);
+}
+
+#slide4:checked ~ .slides {
+    transform: translateX(-30%);
+}
+
+#slide5:checked ~ .slides {
+    transform: translateX(-40%);
+}
+
+#slide6:checked ~ .slides {
+    transform: translateX(-50%);
+}
+
+#slide7:checked ~ .slides {
+    transform: translateX(-60%);
+}
+
+#slide8:checked ~ .slides {
+    transform: translateX(-70%);
+}
+
+#slide9:checked ~ .slides {
+    transform: translateX(-80%);
+}
+
+#slide10:checked ~ .slides {
+    transform: translateX(-90%);
+}
+
+#slide11:checked ~ .slides {
+    transform: translateX(-100%);
+}
+
+#slide12:checked ~ .slides {
+    transform: translateX(-110%);
+}
+
+.scroling {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.scroling label {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #000000;
+    margin: 0 5px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.scroling label:hover {
+    background-color: #a20000;
+} */

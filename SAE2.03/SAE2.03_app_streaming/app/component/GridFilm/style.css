@@ -1,0 +1,113 @@
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  gap: 0.25rem;
+
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  padding-left: 2rem;
+
+  scrollbar-color: hsla(312, 18%, 84%, 0.14) rgba(0, 128, 0, 0);
+  scrollbar-width: thin;
+}
+
+
+.sectfilm {
+  width: 12.75rem;
+  height: auto;
+  flex-shrink: 0;
+  flex-direction: column;
+  border-radius: 0.9375rem;
+  background-color: var(--color-bleu-moins-black);
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  transition: scale 0.2s ease;
+}
+
+
+.sectfilm:hover {
+  box-shadow: 0 0 15px rgba(221, 180, 254, 0.75);
+  scale: 0.2rem;
+}
+
+
+.conteneurlignefilm {
+  display: flex;
+}
+
+.sectfilm__ilustra {
+  width: 12.75rem;
+  height: 22.25rem;
+  border-top-right-radius: 0.9375rem;
+  border-top-left-radius: 0.9375rem;
+  object-fit: cover;
+}
+
+.tablo_titre {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 0px;
+}
+
+.sectfilm__titre {
+  font-size: auto;
+  padding-left: 0.5rem;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: bold;
+  color: var(--color-bleu-with);
+}
+
+.sectfilm__desci {
+  font-size: 0.5rem;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  display: block;
+  color: var(--color-bleu-with);
+  opacity: 80%;
+}
+
+
+.head_retour {
+  width: auto;
+  height: auto;
+
+}
+
+.cate_film {
+  font-size: 2rem;
+  padding: 3rem 0rem 0rem 3.2rem;
+  font-family: "Roboto", sans-serif;
+  color: var(--color-bleu-with);
+}
+
+
+/* Profile */
+.blockShowP {
+  visibility: visible;
+  z-index: 100;
+  float: right;
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 77px;
+  border-left: 0.2em solid var(--color-bleu-moins-black);
+  border-bottom: 0.2em solid var(--color-bleu-moins-black);
+  padding: 1rem 1rem 1rem 1rem ;
+  background-color: var(--color-bleu);
+  
+}
+
+.blockHideP {
+  visibility: hidden;
+}
+

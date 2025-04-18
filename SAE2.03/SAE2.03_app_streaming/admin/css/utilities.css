@@ -1,0 +1,20 @@
+.font-sans {
+  font-family: var(--ff-sans);
+}
+
+.font-mono {
+  font-family: Courier, monospace;
+}
+
+body {
+  background-color: var(--color-bleu-with);
+  padding: 3rem 0rem 0rem 30%
+}
+
+#log {
+  position: relative;
+}
+
+#moviee {
+  position: center;
+}

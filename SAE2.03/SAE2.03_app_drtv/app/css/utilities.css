@@ -1,0 +1,8 @@
+.font-sans {
+  font-family: var(--ff-sans);
+}
+
+body {
+  background-color: var(--color-blanc);
+}
+

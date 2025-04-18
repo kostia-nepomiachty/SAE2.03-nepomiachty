@@ -1,0 +1,46 @@
+<nav class="navbar font-sans">
+
+  <h1 class="logo_site"><em class="logo__maj">SPACE</em>stream</h1>
+  
+  <ul class="navbar__list">
+    <button class="retour-menu" onclick="{{hHome}}">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M3 12L5 10M5 10L12 3L19 10M5 10V20C5 20.5523 5.44772 21 6 21H9M19 10L21 12M19 10V20C19 20.5523 18.5523 21 18 21H15M9 21C9.55228 21 10 20.5523 10 20V16C10 15.4477 10.4477 15 11 15H13C13.5523 15 14 15.4477 14 16V20C14 20.5523 14.4477 21 15 21M9 21H15" stroke="#C6DDE3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg><br/>HOME
+    </button>
+  </ul>
+  
+  <ul class="navbar__list">
+    <select name="categorie" id="categorie" onclick="{{hCategories}}">
+      <option class="point0" value="">Type de film</option>
+      <option class="point0" value="1">Action</option>
+      <option class="point0" value="2">Comédie</option>
+      <option class="point0" value="3">Drame</option>
+      <option class="point0" value="4">Science-fiction</option>
+      <option class="point0" value="5">Animation</option>
+      <option class="point0" value="6">Thriller</option>
+      <option class="point0" value="7">Horreur</option>
+      <option class="point0" value="8">Aventure</option>
+      <option class="point0" value="9">Fantaisie</option>
+      <option class="point0" value="10">Documentaire</option>
+    </select>
+  </ul>
+  
+  <ul class="navbar__favoris">
+    <button class="favoris" onclick="{{hFavoris}}">
+      <svg class="favoris__svg">
+        <path class="etiquette" d="M29 0H0V42.0281C0 42.4349 0.459785 42.6714 0.790708 42.4349L14.6986 32.4962L28.204 42.4154C28.5342 42.6579 29 42.4221 29 42.0124V0Z" fill="#183664"/>
+        <path class="etoil" d="M14.0245 0.463523C14.1741 0.00286778 14.8259 0.00286992 14.9755 0.463525L17.98 9.71024C18.0469 9.91625 18.2389 10.0557 18.4555 10.0557H28.1781C28.6624 10.0557 28.8638 10.6755 28.472 10.9602L20.6062 16.675C20.431 16.8023 20.3577 17.028 20.4246 17.234L23.429 26.4807C23.5787 26.9414 23.0515 27.3245 22.6596 27.0398L14.7939 21.325C14.6186 21.1977 14.3814 21.1977 14.2061 21.325L6.34038 27.0398C5.94853 27.3245 5.42129 26.9414 5.57096 26.4807L8.5754 17.234C8.64234 17.028 8.56901 16.8023 8.39377 16.675L0.528044 10.9602C0.136187 10.6755 0.337576 10.0557 0.821937 10.0557H10.5445C10.7611 10.0557 10.9531 9.91625 11.02 9.71024L14.0245 0.463523Z" fill="#ffc000"/>
+      </svg>
+    </button>
+  </ul>
+
+  <ul class="navbar__profil">
+    <button class="selectp" onclick="{{cProfil}}">
+      <img src="{{chemin}}/server/images/PhotoProfil/{{profilephoto}}" height="100" class="sectprofile"/>
+    </button>
+  </ul>
+
+</nav>
+
+

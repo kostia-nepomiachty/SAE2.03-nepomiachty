@@ -1,0 +1,144 @@
+/* changemant fini */
+
+.choix_pro {
+    width: 100%;
+    height: 100%;
+    float: right;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1001;
+    visibility: visible;
+    background-color: var(--color-svg-rouge);
+}
+
+.pro__ilustra1 {
+    width: 30rem;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding-left: 20%;
+    z-index: 1002;
+}
+
+.ilustra1__image {
+    width: 30rem;
+    height: 100%;
+    position: fixed;
+    object-fit: cover;
+}
+
+.pro__ilustra2 {
+    width: 30rem;
+    position: fixed;
+    z-index: 1002;
+}
+
+.ilustra2__image {
+    width: 30rem;
+    height: 100%;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    object-fit: cover;
+}
+
+.encade_img {
+    width: 40%;
+    height: auto;
+    position: absolute;
+    float: left, top;
+    min-width: 23.375rem;
+    min-height: 38.75rem;
+    padding-top: 3rem;
+    padding-left: 20%;
+    z-index: 1010;
+}
+
+.img__logohaut {
+    width: 5rem;
+    height: 1.5rem;
+    float: right;
+}
+
+.logohaut__img {
+    width: 5rem;
+    object-fit: cover;
+}
+
+.connexion {
+    width: 38.75rem;
+    height: 40rem;
+    padding: 3rem 2rem 3rem 2rem;
+    background-color: var(--color-blanc);
+}
+
+.connexion__titre {
+    font-size: 3.2rem;
+    text-align: center;
+    padding-bottom: 2rem;
+    font-weight: bold;
+    font-family: var(--ff-DR);
+    color: var(--color-svg-rouge);
+}
+
+.connexion__pro {
+    width: 100%;
+    height: 80%;
+    white-space: pre-line;
+    align-items: center;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scrollbar-color: hsla(0, 0%, 100%, 0) rgba(255, 255, 255, 0);
+}
+
+.selectpro {
+    width: 100%;
+    display: flex;
+    font-family: var(--ff-DR);
+    color: var(--color-svg-rouge);
+    background-color: var(--color-gris-font);
+    border-color: rgba(255, 0, 0, 0);
+}
+
+.pro__photo {
+    height: 4rem;
+    width: 4rem;
+    object-fit: cover;
+    padding-right: 1rem;
+}
+
+.pro__name {
+    font-size: 1rem;
+    padding-right: 1rem;
+}
+
+.pro__age {
+    font-size: 1.3rem;
+    opacity: 80%;
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 50rem) and (min-width: 0.625rem) {
+
+    .pro__ilustra1 {
+        visibility: hidden;
+    }
+
+    .pro__ilustra2 {
+        visibility: hidden;
+    }
+
+    .connexion {
+        width: 21.875rem;
+        padding-top: 2rem;
+    }
+
+    .connexion__titre {
+        font-size: 1.5rem;
+        padding-bottom: 1rem;
+    }
+}
+
+
